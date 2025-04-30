@@ -1,14 +1,17 @@
 import './Home.module.css';
 
-import { Navigate, useNavigate } from 'react-router';
 import React, { useEffect, useState } from 'react';
 
 import ListaItem from '../../components/ListaItem/ListaItem';
 import { ROUTES } from '../../const/routes';
+import { useNavigate } from 'react-router';
+import { useTranslation } from 'react-i18next';
 
 function Home() {
     const [viajesInternacionales, setViajesInternacionales] = useState([]);
     const [viajesNacionales, setViajesNacionales] = useState([]);
+
+    const { t, i18n } = useTranslation();
 
     const navegar = useNavigate();
 
@@ -64,6 +67,21 @@ function Home() {
                         onClick={navegarFavoritosdHandler}>
                         Favoritos
                     </button>
+
+                    {/* -------------- trasnlation -------------------- */}
+                    <div>
+                        
+                        <h1>{t('welcome')}</h1>
+                        
+                        <button 
+                            className="bg-sky-600 text-white px-3 py-1 rounded hover:bg-emerald-700 mr-2" 
+                            onClick={() => i18n.changeLanguage('es')}>
+                            {t('button')}
+                        </button>
+
+                    </div>
+
+                    {/* -------------- trasnlation -------------------- */}
 
                     <h2 className="text-2xl font-semibold text-emerald-700 mb-2">Tours Internacionales</h2>
                     {viajesInternacionales && <ListaItem listaItems={viajesInternacionales} />}
