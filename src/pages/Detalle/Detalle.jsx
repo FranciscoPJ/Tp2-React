@@ -6,9 +6,9 @@ import { ROUTES } from "../../const/routes";
 function Detalle() {
     const favoritosGuardadas = JSON.parse(localStorage.getItem("favoritos")) || [];
     const [viajesFavoritos, setViajesFavoritos] = useState(favoritosGuardadas);
+    const [yaAgregado, setYaAgregado] = useState(false);
     const [viaje, setViaje] = useState(null); // Inicializar como null porque viene un solo objeto
     const { tipo, id } = useParams(); // Nos da el id que viene en la URL
-
     const navegar = useNavigate();
 
     const navegarHomedHandler = () => {
@@ -75,28 +75,39 @@ function Detalle() {
 
         localStorage.setItem("favoritos", JSON.stringify(viajesFavoritos));
 
-    }, [id, tipo, viajesFavoritos]); // Mejor poner [id, tipo] en dependencias, por si cambia el id
+        // Verificar si ya está en favoritos
+        const existe = favoritosGuardadas.some(
+            (fav) => fav.id === id && fav.tipo === tipo
+        );
+        setYaAgregado(existe);
+        // hasta aca
 
-    // funcion que agregar un tour en la pagina "favoritos"
-    const agregarFavoritos = (tour) => {
-        const yaExiste = viajesFavoritos.some(
+    }, [id, tipo, viajesFavoritos]); // Mejor poner [id, tipo, viajesFavoritos] en dependencias, por si cambia el id   
+    
+    const toggleFavoritos = (tour) => {
+        const existe = viajesFavoritos.some(
             (fav) => fav.id === tour.id && fav.tipo === tipo
         );
 
-        if (!yaExiste) {
+        if (existe) {
+            const nuevosFavoritos = viajesFavoritos.filter(
+                (fav) => !(fav.id === tour.id && fav.tipo === tipo)
+            );
+            setViajesFavoritos(nuevosFavoritos);
+            localStorage.setItem("favoritos", JSON.stringify(nuevosFavoritos));
+            setYaAgregado(false); // 👈 cambia a NO agregado
+        } else {
             const nuevosFavoritos = [...viajesFavoritos, { ...tour, tipo }];
             setViajesFavoritos(nuevosFavoritos);
             localStorage.setItem("favoritos", JSON.stringify(nuevosFavoritos));
-        } else {
-            console.log("Ya está en favoritos");
+            setYaAgregado(true); // 👈 cambia a agregado
         }
     };
-
 
     return (
         <div>
             {/* Cargando... si viaje === null */}
-            {viaje === null && 
+            {viaje === null &&
                 <div className="flex items-center justify-center h-screen bg-gray-100">
                     <p className="text-6xl font-bold text-gray-700">Cargando...</p>
                 </div>
@@ -144,11 +155,13 @@ function Detalle() {
                                 <div className="text-lg font-semibold text-gray-800">{viaje.id}</div>
                                 <div className="text-gray-700 mb-2">{viaje.pais}</div>
                                 <div className="text-gray-700 mb-2">{viaje.ciudad}</div>
-                                <div className="text-gray-600 mb-4">{viaje.descripcion}</div>
+                                <div className="text-gray-600 mb-4">{viaje.descripcion}</div>                                
                                 <button
-                                    className="bg-sky-600 text-white px-3 py-1 rounded hover:bg-emerald-700 mr-2"
-                                    onClick={() => agregarFavoritos(viaje)}>
-                                    Agregar Favoritos
+                                    className={`${yaAgregado ? 'bg-emerald-600 hover:bg-emerald-700' : 'bg-sky-600 hover:bg-sky-700'
+                                        } text-white px-3 py-1 rounded mr-2`}
+                                    onClick={() => toggleFavoritos(viaje)}
+                                >
+                                    {yaAgregado ? "Agregado" : "Agregar Favoritos"}
                                 </button>
                             </div>
                         ) : ( // sino muestra el viaje nacional
@@ -161,11 +174,13 @@ function Detalle() {
                                 <div className="text-lg font-semibold text-gray-800">{viaje.id}</div>
                                 <div className="text-gray-700 mb-2">{viaje.provincia}</div>
                                 <div className="text-gray-700 mb-2">{viaje.lugares[0]}</div>
-                                <div className="text-gray-600 mb-4">{viaje.descripcion}</div>
+                                <div className="text-gray-600 mb-4">{viaje.descripcion}</div>                                
                                 <button
-                                    className="bg-sky-600 text-white px-3 py-1 rounded hover:bg-emerald-700 mr-2"
-                                    onClick={() => agregarFavoritos(viaje)}>
-                                    Agregar Favoritos
+                                    className={`${yaAgregado ? 'bg-emerald-600 hover:bg-emerald-700' : 'bg-sky-600 hover:bg-sky-700'
+                                        } text-white px-3 py-1 rounded mr-2`}
+                                    onClick={() => toggleFavoritos(viaje)}
+                                >
+                                    {yaAgregado ? "Agregado" : "Agregar Favoritos"}
                                 </button>
                             </div>
                         )}
