@@ -14,54 +14,67 @@ export default function Item({ item, eliminarTour }) {
             .replace(':id?', id);
         navegar(ruta);
     };
-    
+
     return (
         <div>
             {item ? (
-                <div>
+                <div key={item.id}>
                     {item.tipo === "internacional" ? ( // si no tiene la clave provincia, muestra el item internacional
-                        <div>
+                        <div className="bg-white shadow-lg hover:shadow-xl transition-shadow rounded-xl p-4 border border-gray-200">
                             {/* <img
                                 src={item.img}
                                 alt={item.title}
                                 style={{ maxWidth: '80%' }}
                             /> */}
-                            <div>{item.id}</div>
-                            <div>{item.pais}</div>
-                            <div>{item.ciudad}</div>
-                            <div>{item.descripcion}</div>
-                            <br />{/* espaciado entre items */}
-                            <button onClick={() => navegarDetalledHandler(item.tipo, item.id)}>Ver Detalles</button> 
+                            <div className="text-sky-600 font-bold mb-2">{item.id}</div>
+                            <div className="text-gray-800">{item.pais}</div>
+                            <div className="text-gray-700">{item.ciudad}</div>
+                            <div className="text-gray-600 mb-4">{item.descripcion}</div>
+                            <button
+                                className="bg-sky-600 text-white px-3 py-1 rounded hover:bg-emerald-700 mr-2"
+                                onClick={() => navegarDetalledHandler(item.tipo, item.id)}>
+                                Ver Detalles
+                            </button>
                             {
                                 eliminarTour && (
-                                    <button onClick={() => eliminarTour(item.tipo, item.id)}>Eliminar Tour</button>
+                                    <button
+                                        className="bg-red-500 text-white px-3 py-1 rounded hover:bg-red-600"
+                                        onClick={() => eliminarTour(item.tipo, item.id)}>
+                                        Eliminar Tour
+                                    </button>
                                 )
                             }
                         </div>
                     ) : ( // sino muestra el item nacional
-                        <div>
+                        <div className="bg-white shadow-lg hover:shadow-xl transition-shadow rounded-xl p-4 border border-gray-200">
                             {/* <img
                                 src={item.img}
                                 alt={item.title}
                                 style={{ maxWidth: '80%' }}
                             /> */}
-                            <div>{item.id}</div>
-                            <div>{item.provincia}</div>
-                            <div>{item.lugares[0]}</div>
-                            <div>{item.descripcion}</div>
-                            <br />
-                            <button onClick={() => navegarDetalledHandler(item.tipo, item.id)}>Ver Detalles</button>
+                            <div className="text-sky-600 font-bold mb-2">{item.id}</div>
+                            <div className="text-gray-800">{item.provincia}</div>
+                            <div className="text-gray-700">{item.lugares[0]}</div>
+                            <div className="text-gray-600 mb-4">{item.descripcion}</div>
+                            <button 
+                                className="bg-sky-600 text-white px-3 py-1 rounded hover:bg-emerald-700 mr-2"
+                                onClick={() => navegarDetalledHandler(item.tipo, item.id)}>
+                                Ver Detalles
+                            </button>
                             {
                                 eliminarTour && (
-                                    <button onClick={() => eliminarTour(item.tipo, item.id)}>Eliminar Tour</button>
+                                    <button
+                                        className="bg-red-500 text-white px-3 py-1 rounded hover:bg-red-600"
+                                        onClick={() => eliminarTour(item.tipo, item.id)}>
+                                        Eliminar Tour
+                                    </button>
                                 )
                             }
-                            <br /> {/* espaciado entre items */}
                         </div>
                     )}
 
                 </div>
-                )
+            )
                 :
                 (
                     <div>

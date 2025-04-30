@@ -36,17 +36,22 @@ function Favorito() {
 
 
     return (
-        <div>
-            <button onClick={navegarHomedHandler}>Home</button><br /><br />
+        <div className="bg-gray-100 min-h-screen p-6">
+            
+            <button 
+                className="bg-sky-600 text-white px-4 py-2 rounded hover:bg-sky-700"
+                onClick={navegarHomedHandler}>
+                Home
+            </button>
 
-            <h1>Favoritos</h1>
+            <h1 className="text-2xl font-bold text-emerald-700 mt-4 mb-4">Favoritos</h1>
             {viajesFavoritos.length > 0 ?
                 (<div>
                     <ListaItem listaItems={viajesFavoritos} eliminarTour={eliminarTour} />
                 </div>)
                 :
                 (<div>
-                    <h1>no hay tours seleccionados</h1>
+                    <h1 className="text-slate-700 text-lg">No hay tours seleccionados...</h1>
                 </div>)
             }
         </div>

@@ -14,6 +14,7 @@ function App() {
         <Route element={<Home />} path={ROUTES.home} />
         <Route element={<Detalle />} path={ROUTES.detalle} />
         <Route element={<Favoritos />} path={ROUTES.favoritos}  />
+        
       </Routes>
     </BrowserRouter>
   )

@@ -12,9 +12,9 @@ function Home() {
 
     const navegar = useNavigate();
 
-    // const navegarDetalledHandler = () => {
-    //     navegar(ROUTES.detalle);
-    // }
+    const navegarFavoritosdHandler = () => {
+        navegar(ROUTES.favoritos);
+    };
 
 
     const getViajesInternacionales = async () => { // me traigo la api de tours internacionales
@@ -49,15 +49,29 @@ function Home() {
     }, []);
 
     return (
-        <div>
+        <div className="bg-gray-100 min-h-screen p-6">
 
-            <h1>Tours de Viaje</h1>
+            {(viajesInternacionales.length === 0 || viajesNacionales.length === 0) ? (
+                <div className="flex items-center justify-center h-screen bg-gray-100">
+                    <p className="text-6xl font-bold text-gray-700">Cargando...</p>
+                </div>
+            ) : (
+                <div>
+                    <h1 className="text-3xl font-bold text-sky-600 mb-4">Tours de Viaje</h1>
 
-            <h2>Tours Internacionales</h2>
-            {viajesInternacionales && <ListaItem listaItems={viajesInternacionales} />}
+                    <button
+                        className="bg-emerald-600 text-white px-4 py-2 rounded hover:bg-emerald-700"
+                        onClick={navegarFavoritosdHandler}>
+                        Favoritos
+                    </button>
 
-            <h2>Tours Nacionales</h2>
-            {viajesNacionales && <ListaItem listaItems={viajesNacionales} />}
+                    <h2 className="text-2xl font-semibold text-emerald-700 mb-2">Tours Internacionales</h2>
+                    {viajesInternacionales && <ListaItem listaItems={viajesInternacionales} />}
+
+                    <h2 className="text-2xl font-semibold text-emerald-700 mt-8 mb-2">Tours Nacionales</h2>
+                    {viajesNacionales && <ListaItem listaItems={viajesNacionales} />}
+                </div>
+            )}
 
         </div>
     );
