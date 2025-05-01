@@ -56,16 +56,19 @@ function Home() {
 
             {(viajesInternacionales.length === 0 || viajesNacionales.length === 0) ? (
                 <div className="flex items-center justify-center h-screen bg-gray-100">
-                    <p className="text-6xl font-bold text-gray-700">Cargando...</p>
+                    <p className="text-6xl font-bold text-gray-700">
+                        {t('home.cargando')}
+                    </p>
                 </div>
             ) : (
                 <div>
-                    <h1 className="text-3xl font-bold text-sky-600 mb-4">Tours de Viaje</h1>
+                    
+                    <h1 className="text-3xl font-bold text-sky-600 mb-4">{t('home.titulo')}</h1>
 
                     <button
                         className="bg-emerald-600 text-white px-4 py-2 rounded hover:bg-emerald-700"
                         onClick={navegarFavoritosdHandler}>
-                        Favoritos
+                        {t('home.favoritos')}
                     </button>
 
                     {/* -------------- trasnlation -------------------- */}
@@ -83,10 +86,15 @@ function Home() {
 
                     {/* -------------- trasnlation -------------------- */}
 
-                    <h2 className="text-2xl font-semibold text-emerald-700 mb-2">Tours Internacionales</h2>
+                    <h2 className="text-2xl font-semibold text-emerald-700 mb-2"> 
+                        {t('home.toursInternacioales')}</h2>
+                        
                     {viajesInternacionales && <ListaItem listaItems={viajesInternacionales} />}
 
-                    <h2 className="text-2xl font-semibold text-emerald-700 mt-8 mb-2">Tours Nacionales</h2>
+                    <h2 className="text-2xl font-semibold text-emerald-700 mt-8 mb-2">
+                        {t('home.toursNacioales')}
+                    </h2>
+                    
                     {viajesNacionales && <ListaItem listaItems={viajesNacionales} />}
                 </div>
             )}

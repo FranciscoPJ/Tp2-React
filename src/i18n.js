@@ -12,8 +12,8 @@ i18n
             en: { translation: translationEN },
             es: { translation: translationES },
         },
-        //lng: 'es', // Idioma por defecto cambiado a español
-        //fallbackLng: 'es', // También usar español como respaldo
+        lng: 'es', // Idioma por defecto cambiado a español
+        fallbackLng: 'en', // También usar ingles como respaldo
 
         interpolation: {
             escapeValue: false, // React ya hace el escape

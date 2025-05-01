@@ -1,4 +1,8 @@
-{
-    "welcome": "¡Bienvenido a nuestra aplicación!",
-    "button": "Haz clic"
+{   
+    "home.cargando": "Cargando...",
+    "home.titulo": "Tours de Viaje",
+    "home.favoritos": "Favoritos",
+    "home.toursInternacioales": "Tours Internacionales",
+    "home.toursNacioales": "Tours Nacionales"
+
 }

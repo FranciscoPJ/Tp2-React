@@ -2,9 +2,12 @@ import React, { useState } from 'react'
 
 import { ROUTES } from '../../const/routes'; // Ajusta la ruta si es distinta
 import { useNavigate } from 'react-router';
+import { useTranslation } from 'react-i18next';
 
 export default function Item({ item, eliminarTour }) {
     //const [mostraObjeto, setMostraObjeto] = useState(item);
+
+    const { t, i18n } = useTranslation();
 
     const navegar = useNavigate();
 
@@ -26,10 +29,18 @@ export default function Item({ item, eliminarTour }) {
                                 alt={item.title}
                                 style={{ maxWidth: '80%' }}
                             /> */}
-                            <div className="text-sky-600 font-bold mb-2">{item.id}</div>
-                            <div className="text-gray-800">{item.pais}</div>
-                            <div className="text-gray-700">{item.ciudad}</div>
-                            <div className="text-gray-600 mb-4">{item.descripcion}</div>
+                            <div className="text-sky-600 font-bold mb-2">
+                                {item.id}
+                            </div>
+                            <div className="text-gray-800">
+                                {item.pais}
+                            </div>
+                            <div className="text-gray-700">
+                                {item.ciudad}
+                            </div>
+                            <div className="text-gray-600 mb-4">
+                                {item.descripcion}
+                            </div>
                             <button
                                 className="bg-sky-600 text-white px-3 py-1 rounded hover:bg-emerald-700 mr-2"
                                 onClick={() => navegarDetalledHandler(item.tipo, item.id)}>
@@ -52,10 +63,18 @@ export default function Item({ item, eliminarTour }) {
                                 alt={item.title}
                                 style={{ maxWidth: '80%' }}
                             /> */}
-                            <div className="text-sky-600 font-bold mb-2">{item.id}</div>
-                            <div className="text-gray-800">{item.provincia}</div>
-                            <div className="text-gray-700">{item.lugares[0]}</div>
-                            <div className="text-gray-600 mb-4">{item.descripcion}</div>
+                            <div className="text-sky-600 font-bold mb-2">
+                                {item.id}
+                            </div>
+                            <div className="text-gray-800">
+                                {item.provincia}
+                            </div>
+                            <div className="text-gray-700">
+                                {item.lugares[0]}
+                            </div>
+                            <div className="text-gray-600 mb-4">
+                                {item.descripcion}
+                            </div>
                             <button 
                                 className="bg-sky-600 text-white px-3 py-1 rounded hover:bg-emerald-700 mr-2"
                                 onClick={() => navegarDetalledHandler(item.tipo, item.id)}>
