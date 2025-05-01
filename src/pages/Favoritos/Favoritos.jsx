@@ -3,12 +3,13 @@ import { useNavigate, useParams } from "react-router-dom"; //  OJO: es "react-ro
 
 import ListaItem from '../../components/ListaItem/ListaItem';
 import { ROUTES } from '../../const/routes';
+import { useTranslation } from 'react-i18next';
 
 function Favorito() {
 
     const favoritosGuardadas = JSON.parse(localStorage.getItem("favoritos")) || [];
     const [viajesFavoritos, setViajesFavoritos] = useState(favoritosGuardadas);
-
+    const { t, i18n } = useTranslation();
     const navegar = useNavigate();
 
     const navegarHomedHandler = () => {
@@ -41,17 +42,17 @@ function Favorito() {
             <button 
                 className="bg-sky-600 text-white px-4 py-2 rounded hover:bg-sky-700"
                 onClick={navegarHomedHandler}>
-                Home
+                {t('home')}
             </button>
 
-            <h1 className="text-2xl font-bold text-emerald-700 mt-4 mb-4">Favoritos</h1>
+            <h1 className="text-2xl font-bold text-emerald-700 mt-4 mb-4">{t('favoritos')}</h1>
             {viajesFavoritos.length > 0 ?
                 (<div>
                     <ListaItem listaItems={viajesFavoritos} eliminarTour={eliminarTour} />
                 </div>)
                 :
                 (<div>
-                    <h1 className="text-slate-700 text-lg">No hay tours seleccionados...</h1>
+                    <h1 className="text-slate-700 text-lg">{t('noHayTours')}</h1>
                 </div>)
             }
         </div>

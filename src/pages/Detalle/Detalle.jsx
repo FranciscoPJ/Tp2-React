@@ -1,14 +1,17 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom"; //  OJO: es "react-router-dom", no "react-router"
 
+import Item from "../../components/Item/Item";
 import { ROUTES } from "../../const/routes";
+import { useTranslation } from 'react-i18next';
 
 function Detalle() {
     const favoritosGuardadas = JSON.parse(localStorage.getItem("favoritos")) || [];
     const [viajesFavoritos, setViajesFavoritos] = useState(favoritosGuardadas);
     const [yaAgregado, setYaAgregado] = useState(false);
     const [viaje, setViaje] = useState(null); // Inicializar como null porque viene un solo objeto
-    const { tipo, id } = useParams(); // Nos da el id que viene en la URL
+    const { t, i18n } = useTranslation();
+    const { tipo, id } = useParams(); // Nos da el id que viene en la URL    
     const navegar = useNavigate();
 
     const navegarHomedHandler = () => {
@@ -83,8 +86,8 @@ function Detalle() {
         // hasta aca
 
     }, [id, tipo, viajesFavoritos]); // Mejor poner [id, tipo, viajesFavoritos] en dependencias, por si cambia el id   
-    
-    const toggleFavoritos = (tour) => {
+
+    const agregarFavoritos = (tour) => {
         const existe = viajesFavoritos.some(
             (fav) => fav.id === tour.id && fav.tipo === tipo
         );
@@ -95,98 +98,65 @@ function Detalle() {
             );
             setViajesFavoritos(nuevosFavoritos);
             localStorage.setItem("favoritos", JSON.stringify(nuevosFavoritos));
-            setYaAgregado(false); // 👈 cambia a NO agregado
+            setYaAgregado(false); // cambia a NO agregado
         } else {
             const nuevosFavoritos = [...viajesFavoritos, { ...tour, tipo }];
             setViajesFavoritos(nuevosFavoritos);
             localStorage.setItem("favoritos", JSON.stringify(nuevosFavoritos));
-            setYaAgregado(true); // 👈 cambia a agregado
+            setYaAgregado(true); // cambia a agregado
         }
     };
 
     return (
         <div>
+            
             {/* Cargando... si viaje === null */}
             {viaje === null &&
                 <div className="flex items-center justify-center h-screen bg-gray-100">
-                    <p className="text-6xl font-bold text-gray-700">Cargando...</p>
+                    <p className="text-6xl font-bold text-gray-700">{t('cargando')}</p>
                 </div>
             }
 
             {/* Error si viaje === undefined */}
             {viaje === undefined && (
                 <div className="bg-white p-4 mt-4 rounded-lg shadow">
-                    <h1 className="text-red-600 text-lg">Error 404: El tour no fue encontrado</h1>
-                    <p className="text-red-600 text-lg">Verifica que el Tipo o ID sea correcto.</p>
+                    <h1 className="text-red-600 text-lg">{t('error404')}</h1>
+                    <p className="text-red-600 text-lg">{t('verificarTipoId')}</p>
                     <button
                         className="bg-sky-600 text-white px-4 py-2 rounded hover:bg-sky-700"
                         onClick={navegarHomedHandler}>
-                        Home
+                        {t('home')}
                     </button>
                 </div>
             )}
 
             {/* Detalle si viaje tiene contenido */}
             {viaje && (
+                
                 <div className="bg-gray-100 min-h-screen p-6">
 
-                    <h1 className="text-3xl font-bold text-sky-700 mb-4">Detalles del Tour</h1>
+                    <h1 className="text-3xl font-bold text-sky-700 mb-4">{t('detallesTour')}</h1>
 
                     <button
                         className="bg-sky-600 text-white px-4 py-2 rounded hover:bg-sky-700 mr-2"
                         onClick={navegarHomedHandler}>
-                        Home
+                        {t('home')}
                     </button>
 
                     <button
                         className="bg-emerald-600 text-white px-4 py-2 rounded hover:bg-emerald-700"
                         onClick={navegarFavoritosdHandler}>
-                        Favoritos
+                        {t('favoritos')}
                     </button>
 
-                    <div className="bg-white p-4 mt-4 rounded-lg shadow">
-                        {viaje.tipo === "internacional" ? ( // si no tiene la clave provincia, muestra el viaje internacional
-                            <div>
-                                {/* <img
-                                src={viaje.img}
-                                alt={viaje.title}
-                                style={{ maxWidth: '80%' }}
-                            /> */}
-                                <div className="text-lg font-semibold text-gray-800">{viaje.id}</div>
-                                <div className="text-gray-700 mb-2">{viaje.pais}</div>
-                                <div className="text-gray-700 mb-2">{viaje.ciudad}</div>
-                                <div className="text-gray-600 mb-4">{viaje.descripcion}</div>                                
-                                <button
-                                    className={`${yaAgregado ? 'bg-emerald-600 hover:bg-emerald-700' : 'bg-sky-600 hover:bg-sky-700'
-                                        } text-white px-3 py-1 rounded mr-2`}
-                                    onClick={() => toggleFavoritos(viaje)}
-                                >
-                                    {yaAgregado ? "Agregado" : "Agregar Favoritos"}
-                                </button>
-                            </div>
-                        ) : ( // sino muestra el viaje nacional
-                            <div>
-                                {/* <img
-                                src={viaje.img}
-                                alt={viaje.title}
-                                style={{ maxWidth: '80%' }}
-                            /> */}
-                                <div className="text-lg font-semibold text-gray-800">{viaje.id}</div>
-                                <div className="text-gray-700 mb-2">{viaje.provincia}</div>
-                                <div className="text-gray-700 mb-2">{viaje.lugares[0]}</div>
-                                <div className="text-gray-600 mb-4">{viaje.descripcion}</div>                                
-                                <button
-                                    className={`${yaAgregado ? 'bg-emerald-600 hover:bg-emerald-700' : 'bg-sky-600 hover:bg-sky-700'
-                                        } text-white px-3 py-1 rounded mr-2`}
-                                    onClick={() => toggleFavoritos(viaje)}
-                                >
-                                    {yaAgregado ? "Agregado" : "Agregar Favoritos"}
-                                </button>
-                            </div>
-                        )}
-                    </div>
+                    <br /><br /> {/* Espaciado */}
+                    
+                    <Item item={viaje} agregarFavoritos={agregarFavoritos} yaAgregado={yaAgregado} />
+                    
                 </div>
+                
             )}
+            
         </div>
     );
 }

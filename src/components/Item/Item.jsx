@@ -4,7 +4,7 @@ import { ROUTES } from '../../const/routes'; // Ajusta la ruta si es distinta
 import { useNavigate } from 'react-router';
 import { useTranslation } from 'react-i18next';
 
-export default function Item({ item, eliminarTour }) {
+export default function Item({ item, eliminarTour, agregarFavoritos, yaAgregado }) {
     //const [mostraObjeto, setMostraObjeto] = useState(item);
 
     const { t, i18n } = useTranslation();
@@ -17,6 +17,13 @@ export default function Item({ item, eliminarTour }) {
             .replace(':id?', id);
         navegar(ruta);
     };
+
+    const normalizar = (texto) =>
+        texto
+            .toLowerCase()
+            .normalize("NFD") // elimina acentos
+            .replace(/[\u0300-\u036f]/g, "")
+            .replace(/[^a-z0-9]/g, ""); // elimina espacios y símbolos
 
     return (
         <div>
@@ -33,25 +40,37 @@ export default function Item({ item, eliminarTour }) {
                                 {item.id}
                             </div>
                             <div className="text-gray-800">
-                                {item.pais}
+                                {t(`internacional.pais.${normalizar(item.pais)}`)}
                             </div>
                             <div className="text-gray-700">
-                                {item.ciudad}
+                                {t(`internacional.ciudad.${normalizar(item.ciudad)}`)}
                             </div>
                             <div className="text-gray-600 mb-4">
-                                {item.descripcion}
+                                {t(`internacional.descripcion.${normalizar(item.descripcion)}`)}
                             </div>
-                            <button
-                                className="bg-sky-600 text-white px-3 py-1 rounded hover:bg-emerald-700 mr-2"
-                                onClick={() => navegarDetalledHandler(item.tipo, item.id)}>
-                                Ver Detalles
-                            </button>
                             {
                                 eliminarTour && (
                                     <button
                                         className="bg-red-500 text-white px-3 py-1 rounded hover:bg-red-600"
                                         onClick={() => eliminarTour(item.tipo, item.id)}>
-                                        Eliminar Tour
+                                        {t('eliminarTour')}
+                                    </button>
+                                )
+                            }
+                            {
+                                agregarFavoritos ? (
+                                    <button
+                                        className={`${yaAgregado ? 'bg-emerald-600 hover:bg-emerald-700' : 'bg-sky-600 hover:bg-sky-700'
+                                            } text-white px-3 py-1 rounded mr-2`}
+                                        onClick={() => agregarFavoritos(item)}
+                                    >
+                                        {yaAgregado ? t('agregado') : t('agregarFavoritos')}
+                                    </button>
+                                ) : (
+                                    <button
+                                        className="bg-sky-600 text-white px-3 py-1 rounded hover:bg-emerald-700 mr-2"
+                                        onClick={() => navegarDetalledHandler(item.tipo, item.id)}>
+                                        {t('verDetalles')}
                                     </button>
                                 )
                             }
@@ -67,25 +86,37 @@ export default function Item({ item, eliminarTour }) {
                                 {item.id}
                             </div>
                             <div className="text-gray-800">
-                                {item.provincia}
+                                {t(`nacional.provincia.${normalizar(item.provincia)}`)}
                             </div>
                             <div className="text-gray-700">
-                                {item.lugares[0]}
+                                {t(`nacional.lugares.${normalizar(item.lugares[0])}`)}
                             </div>
                             <div className="text-gray-600 mb-4">
-                                {item.descripcion}
+                                {t(`nacional.descripcion.${normalizar(item.descripcion)}`)}
                             </div>
-                            <button 
-                                className="bg-sky-600 text-white px-3 py-1 rounded hover:bg-emerald-700 mr-2"
-                                onClick={() => navegarDetalledHandler(item.tipo, item.id)}>
-                                Ver Detalles
-                            </button>
                             {
                                 eliminarTour && (
                                     <button
                                         className="bg-red-500 text-white px-3 py-1 rounded hover:bg-red-600"
                                         onClick={() => eliminarTour(item.tipo, item.id)}>
-                                        Eliminar Tour
+                                        {t('eliminarTour')}
+                                    </button>
+                                )
+                            }
+                            {
+                                agregarFavoritos ? (
+                                    <button
+                                        className={`${yaAgregado ? 'bg-emerald-600 hover:bg-emerald-700' : 'bg-sky-600 hover:bg-sky-700'
+                                            } text-white px-3 py-1 rounded mr-2`}
+                                        onClick={() => agregarFavoritos(item)}
+                                    >
+                                        {yaAgregado ? t('agregado') : t('agregarFavoritos')}
+                                    </button>
+                                ) : (
+                                    <button
+                                        className="bg-sky-600 text-white px-3 py-1 rounded hover:bg-emerald-700 mr-2"
+                                        onClick={() => navegarDetalledHandler(item.tipo, item.id)}>
+                                        {t('verDetalles')}
                                     </button>
                                 )
                             }
@@ -97,7 +128,7 @@ export default function Item({ item, eliminarTour }) {
                 :
                 (
                     <div>
-                        no hay resultado
+                        {t('noHayResultados')}
                     </div>
                 )
             }

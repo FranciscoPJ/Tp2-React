@@ -1,8 +1,75 @@
-{   
-    "home.cargando": "Cargando...",
-    "home.titulo": "Tours de Viaje",
-    "home.favoritos": "Favoritos",
-    "home.toursInternacioales": "Tours Internacionales",
-    "home.toursNacioales": "Tours Nacionales"
+{
+    "traducir": "traducir en Ingles",
+    "cargando": "Cargando...",
+    "titulo": "Tours de Viaje",
+    "home": "Home",
+    "favoritos": "Favoritos",
+    "eliminarTour": "Eliminar Tour",    
+    "toursInternacioales": "Tours Internacionales",
+    "toursNacioales": "Tours Nacionales",
+    "verDetalles": "Ver Detalles",    
+    "noHayResultados": "no hay resultado",
+    "error404": "Error 404: El tour no fue encontrado",
+    "verificarTipoId": "Verifica que el Tipo o ID sea correcto.",
+    "detallesTour": "Detalles del Tour",
+    "agregado" : "Agregado",
+    "agregarFavoritos": "Agregar Favoritos",
+    "noHayTours": "No hay tours seleccionados...",
+
+    "internacional": {
+        "pais": {
+            "brasil": "Brasil",
+            "estadosunidos": "Estados Unidos",
+            "chile": "Chile",
+            "canada": "Canada",
+            "mexico": "México"
+        },
+        "ciudad": {
+            "riodejaneiro": "Río de Janeiro",
+            "sacramento": "Sacramento",
+            "pucon": "Pucón",
+            "ottawa": "Ottawa",
+            "tulun": "Tulum"
+        },
+        "atracciones": {
+            "playa": "Playa",
+            "yosemitenationalpark": "Parque Nacional Yosemite",
+            "saltopalguin": "Salto Palguín",
+            "rougueriver": "Rogue River",
+            "palaya": "Playa"
+        },
+        "descripcion": {
+            "descripcion1": "Descripción 1",
+            "descripcion2": "Descripción 2",
+            "descripcion3": "Descripción 3",
+            "descripcion4": "Descripción 4",
+            "descripcion5": "Descripción 5"
+        }
+    },
+
+    "nacional": {
+        "provincia": {
+            "neuquen": "Neuquén",
+            "mendoza": "Mendoza",
+            "rionegro": "Río Negro",
+            "santacruz": "Santa Cruz",
+            "chubut": "Chubut"
+        },
+        "lugares": {
+            "villalaangostura": "Villa La Angostura",
+            "valleatuel": "Valle Atuel",
+            "elbolson": "El Bolsón",
+            "elchalten": "El Chaltén",
+            "comodororivadavia": "Comodoro Rivadavia"
+        },
+        "descripcion": {
+            "descripcion1": "Descripción 1",
+            "descripcion2": "Descripción 2",
+            "descripcion3": "Descripción 3",
+            "descripcion4": "Descripción 4",
+            "descripcion5": "Descripción 5"
+        }
+    }
+
 
 }

@@ -1,3 +1,73 @@
 {
-    "home.titulo": "Travel tours"
+    "traducir": "translate in Spanish",
+    "cargando": "Loading...",
+    "titulo": "Travel Tours",
+    "home": "Home",
+    "favoritos": "Favorites",
+    "verDetalles": "View Details",
+    "toursInternacioales": "International Tours",
+    "toursNacioales": "National Tours",
+    "eliminarTour": "Delete Tour",
+    "noHayResultados": "No results found",
+    "error404": "Error 404: Tour not found",
+    "verificarTipoId": "Please check that the type or ID is correct.",
+    "detallesTour": "Tour Details",
+    "agregado": "Added",
+    "agregarFavoritos": "Add to Favorites",
+    "noHayTours": "No tours selected...",
+
+    "internacional": {
+        "pais": {
+            "brasil": "Brazil",
+            "estadosunidos": "United States",
+            "chile": "Chile",
+            "canada": "Canada",
+            "mexico": "Mexico"
+        },
+        "ciudad": {
+            "riodejaneiro": "Rio de Janeiro",
+            "sacramento": "Sacramento",
+            "pucon": "Pucon",
+            "ottawa": "Ottawa",
+            "tulun": "Tulum"
+        },
+        "atracciones": {
+            "playa": "Beach",
+            "yosemitenationalpark": "Yosemite National Park",
+            "saltopalguin": "Palguín Waterfall",
+            "rougueriver": "Rogue River",
+            "palaya": "Beach"
+        },
+        "descripcion": {
+            "descripcion1": "Description 1",
+            "descripcion2": "Description 2",
+            "descripcion3": "Description 3",
+            "descripcion4": "Description 4",
+            "descripcion5": "Description 5"
+        }
+    },
+
+    "nacional": {
+        "provincia": {
+            "neuquen": "Neuquén",
+            "mendoza": "Mendoza",
+            "rionegro": "Río Negro",
+            "santacruz": "Santa Cruz",
+            "chubut": "Chubut"
+        },
+        "lugares": {
+            "villalaangostura": "Villa La Angostura",
+            "valleatuel": "Atuel Valley",
+            "elbolson": "El Bolsón",
+            "elchalten": "El Chaltén",
+            "comodororivadavia": "Comodoro Rivadavia"
+        },
+        "descripcion": {
+            "descripcion1": "Description 1",
+            "descripcion2": "Description 2",
+            "descripcion3": "Description 3",
+            "descripcion4": "Description 4",
+            "descripcion5": "Description 5"
+        }
+    }
 }

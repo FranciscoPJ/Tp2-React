@@ -19,6 +19,10 @@ function Home() {
         navegar(ROUTES.favoritos);
     };
 
+    const toggleLanguage = () => {
+        const nuevoIdioma = i18n.language === 'es' ? 'en' : 'es';
+        i18n.changeLanguage(nuevoIdioma);
+    };
 
     const getViajesInternacionales = async () => { // me traigo la api de tours internacionales
         try {
@@ -57,44 +61,37 @@ function Home() {
             {(viajesInternacionales.length === 0 || viajesNacionales.length === 0) ? (
                 <div className="flex items-center justify-center h-screen bg-gray-100">
                     <p className="text-6xl font-bold text-gray-700">
-                        {t('home.cargando')}
+                        {t('cargando')}
                     </p>
                 </div>
             ) : (
                 <div>
-                    
-                    <h1 className="text-3xl font-bold text-sky-600 mb-4">{t('home.titulo')}</h1>
+
+                    <h1 className="text-3xl font-bold text-sky-600 mb-4">{t('titulo')}</h1>
 
                     <button
                         className="bg-emerald-600 text-white px-4 py-2 rounded hover:bg-emerald-700"
                         onClick={navegarFavoritosdHandler}>
-                        {t('home.favoritos')}
+                        {t('favoritos')}
                     </button>
 
-                    {/* -------------- trasnlation -------------------- */}
-                    <div>
-                        
-                        <h1>{t('welcome')}</h1>
-                        
-                        <button 
-                            className="bg-sky-600 text-white px-3 py-1 rounded hover:bg-emerald-700 mr-2" 
-                            onClick={() => i18n.changeLanguage('es')}>
-                            {t('button')}
-                        </button>
+                    {/* -------------- boton de trasnlation -------------------- */}
+                    <button
+                        className="bg-sky-600 text-white px-4 py-2 rounded hover:bg-sky-700 mr-2"
+                        onClick={toggleLanguage}>
+                        {t('traducir')}
+                    </button>                    
+                    {/* -------------- boton de trasnlation -------------------- */}
 
-                    </div>
+                    <h2 className="text-2xl font-semibold text-emerald-700 mb-2">
+                        {t('toursInternacioales')}</h2>
 
-                    {/* -------------- trasnlation -------------------- */}
-
-                    <h2 className="text-2xl font-semibold text-emerald-700 mb-2"> 
-                        {t('home.toursInternacioales')}</h2>
-                        
                     {viajesInternacionales && <ListaItem listaItems={viajesInternacionales} />}
 
                     <h2 className="text-2xl font-semibold text-emerald-700 mt-8 mb-2">
-                        {t('home.toursNacioales')}
+                        {t('toursNacioales')}
                     </h2>
-                    
+
                     {viajesNacionales && <ListaItem listaItems={viajesNacionales} />}
                 </div>
             )}
