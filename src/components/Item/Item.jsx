@@ -31,11 +31,11 @@ export default function Item({ item, eliminarTour, agregarFavoritos, yaAgregado 
                 <div key={item.id}>
                     {item.tipo === "internacional" ? ( // si no tiene la clave provincia, muestra el item internacional
                         <div className="bg-white shadow-lg hover:shadow-xl transition-shadow rounded-xl p-4 border border-gray-200">
-                            {/* <img
-                                src={item.img}
-                                alt={item.title}
+                            <img
+                                src={item.coverImage}
+                                alt={item.ciudad}
                                 style={{ maxWidth: '80%' }}
-                            /> */}
+                            />
                             <div className="text-sky-600 font-bold mb-2">
                                 {item.id}
                             </div>
@@ -77,11 +77,10 @@ export default function Item({ item, eliminarTour, agregarFavoritos, yaAgregado 
                         </div>
                     ) : ( // sino muestra el item nacional
                         <div className="bg-white shadow-lg hover:shadow-xl transition-shadow rounded-xl p-4 border border-gray-200">
-                            {/* <img
-                                src={item.img}
-                                alt={item.title}
-                                style={{ maxWidth: '80%' }}
-                            /> */}
+                            <img
+                                src={item.coverImage}
+                                alt={item.provincia}
+                            />
                             <div className="text-sky-600 font-bold mb-2">
                                 {item.id}
                             </div>

@@ -25,7 +25,7 @@ function Home() {
         localStorage.setItem('idioma', nuevoIdioma); // Guarda el idioma en localStorage
     };
 
-    const getViajesInternacionales = async () => { // me traigo la api de tours internacionales
+    const getViajesInternacionales = async () => { // me traigo la api con todos los tours internacionales
         try {
             const viajesInternacionalesResultado = await fetch(
                 `https://680bf8e32ea307e081d2dac3.mockapi.io/api/v1/tours_internacionales`
@@ -38,7 +38,7 @@ function Home() {
         }
     };
 
-    const getViajesNacionales = async () => { // me traigo la api de tours nacionales
+    const getViajesNacionales = async () => { // me traigo la api con todos los tours nacionales
         try {
             const viajesNacionalesResultado = await fetch(
                 `https://680bf8e32ea307e081d2dac3.mockapi.io/api/v1/tours_nacionales`
@@ -61,9 +61,11 @@ function Home() {
 
             {(viajesInternacionales.length === 0 || viajesNacionales.length === 0) ? (
                 <div className="flex items-center justify-center h-screen bg-gray-100">
+                    
                     <p className="text-6xl font-bold text-gray-700">
                         {t('cargando')}
                     </p>
+
                 </div>
             ) : (
                 <div>
