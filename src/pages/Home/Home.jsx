@@ -19,9 +19,10 @@ function Home() {
         navegar(ROUTES.favoritos);
     };
 
-    const toggleLanguage = () => {
+    const cambiarIdioma = () => {
         const nuevoIdioma = i18n.language === 'es' ? 'en' : 'es';
         i18n.changeLanguage(nuevoIdioma);
+        localStorage.setItem('idioma', nuevoIdioma); // Guarda el idioma en localStorage
     };
 
     const getViajesInternacionales = async () => { // me traigo la api de tours internacionales
@@ -78,7 +79,7 @@ function Home() {
                     {/* -------------- boton de trasnlation -------------------- */}
                     <button
                         className="bg-sky-600 text-white px-4 py-2 rounded hover:bg-sky-700 mr-2"
-                        onClick={toggleLanguage}>
+                        onClick={cambiarIdioma}>
                         {t('traducir')}
                     </button>                    
                     {/* -------------- boton de trasnlation -------------------- */}
