@@ -32,8 +32,8 @@ function Footer() {
                     <div>
                         <h3 className="text-lg font-semibold mb-2">Contacto</h3>
                         <ul className="text-sm text-gray-300 space-y-1">
-                            <li>📍 Av. Libertador 1234, Buenos Aires, Argentina</li>
-                            <li>📞 +54 11 1234-5678</li>
+                            <li>📍 Av. Argentina 345, Neuquen Capital, Argentina</li>
+                            <li>📞 +54 299 1234-5678</li>
                             <li>📧 info@tourmundo.com</li>
                         </ul>
                     </div>
