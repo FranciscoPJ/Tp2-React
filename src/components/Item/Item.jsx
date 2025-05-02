@@ -68,7 +68,7 @@ export default function Item({ item, eliminarTour, agregarFavoritos, yaAgregado 
                                     </div>
                                 ) : (
                                     <button
-                                        className="bg-sky-600 text-white px-3 py-1 rounded hover:bg-emerald-700 mr-2"
+                                        className="bg-sky-600 text-white px-3 py-1 rounded hover:bg-emerald-700 ml-2"
                                         onClick={() => navegarDetalledHandler(item.tipo, item.id)}>
                                         {t('verDetalles')}
                                     </button>
@@ -118,7 +118,7 @@ export default function Item({ item, eliminarTour, agregarFavoritos, yaAgregado 
 
                                 ) : (
                                     <button
-                                        className="bg-sky-600 text-white px-3 py-1 rounded hover:bg-emerald-700 mr-2"
+                                        className="bg-sky-600 text-white px-3 py-1 rounded hover:bg-emerald-700 ml-2"
                                         onClick={() => navegarDetalledHandler(item.tipo, item.id)}>
                                         {t('verDetalles')}
                                     </button>
