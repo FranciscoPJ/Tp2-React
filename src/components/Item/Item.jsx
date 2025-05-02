@@ -34,11 +34,11 @@ export default function Item({ item, eliminarTour, agregarFavoritos, yaAgregado 
                             <img
                                 src={item.coverImage}
                                 alt={item.ciudad}
-                                style={{ maxWidth: '80%' }}
+                                className="w-full h-48 object-cover rounded"
                             />
-                            <div className="text-sky-600 font-bold mb-2">
+                            {/* <div className="text-sky-600 font-bold mb-2">
                                 {item.id}
-                            </div>
+                            </div> */}
                             <div className="text-gray-800">
                                 {t(`internacional.pais.${normalizar(item.pais)}`)}
                             </div>
@@ -80,10 +80,11 @@ export default function Item({ item, eliminarTour, agregarFavoritos, yaAgregado 
                             <img
                                 src={item.coverImage}
                                 alt={item.provincia}
+                                className="w-full h-48 object-cover rounded"
                             />
-                            <div className="text-sky-600 font-bold mb-2">
+                            {/* <div className="text-sky-600 font-bold mb-2">
                                 {item.id}
-                            </div>
+                            </div> */}
                             <div className="text-gray-800">
                                 {t(`nacional.provincia.${normalizar(item.provincia)}`)}
                             </div>

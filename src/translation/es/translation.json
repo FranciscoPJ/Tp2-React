@@ -29,7 +29,7 @@
             "sacramento": "Sacramento",
             "pucon": "Pucón",
             "ottawa": "Ottawa",
-            "tulun": "Tulum"
+            "tulum": "Tulum"
         },
         "atracciones": {
             "playa": "Playa",
@@ -57,7 +57,7 @@
         },
         "lugares": {
             "villalaangostura": "Villa La Angostura",
-            "valleatuel": "Valle Grande",
+            "vallegrande": "Valle Grande",
             "elbolson": "El Bolsón",
             "elchalten": "El Chaltén",
             "comodororivadavia": "Comodoro Rivadavia"
