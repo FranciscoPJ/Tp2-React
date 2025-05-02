@@ -5,20 +5,11 @@ import ListaItem from '../../components/ListaItem/ListaItem';
 import { ROUTES } from '../../const/routes';
 import { useTranslation } from 'react-i18next';
 
-function Favorito() {
+function Favoritos() {
 
     const favoritosGuardadas = JSON.parse(localStorage.getItem("favoritos")) || [];
     const [viajesFavoritos, setViajesFavoritos] = useState(favoritosGuardadas);
-    const { t, i18n } = useTranslation();
-    const navegar = useNavigate();
-
-    const navegarHomedHandler = () => {
-        navegar(ROUTES.home);
-    }
-
-    const navegarDetalledHandler = () => {
-        navegar(ROUTES.detalle);
-    }
+    const { t } = useTranslation();
 
     // Funcion que elimina un tour basado en tipo e id
     const eliminarTour = (tipo, id) => {
@@ -29,23 +20,15 @@ function Favorito() {
         localStorage.setItem("favoritos", JSON.stringify(nuevaListaFavoritos));
     };
 
-
     // Guardar en localStorage cada vez que cambian porVer o vistas
     useEffect(() => {
         localStorage.setItem("favoritos", JSON.stringify(viajesFavoritos));
     }, [viajesFavoritos]);
 
-
     return (
-        <div className="bg-gray-100 min-h-screen p-6">
-            
-            <button 
-                className="bg-sky-600 text-white px-4 py-2 rounded hover:bg-sky-700"
-                onClick={navegarHomedHandler}>
-                {t('home')}
-            </button>
+        <div className="bg-gray-100 min-h-screen p-6">            
 
-            <h1 className="text-2xl font-bold text-emerald-700 mt-4 mb-4">{t('favoritos')}</h1>
+            <h1 className="text-3xl font-bold text-emerald-700 mb-4">{t('favoritos')}</h1>
             {viajesFavoritos.length > 0 ?
                 (<div>
                     <ListaItem listaItems={viajesFavoritos} eliminarTour={eliminarTour} />
@@ -59,4 +42,4 @@ function Favorito() {
     )
 }
 
-export default Favorito;
+export default Favoritos;

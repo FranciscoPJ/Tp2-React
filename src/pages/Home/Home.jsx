@@ -14,18 +14,6 @@ function Home() {
 
     const { t, i18n } = useTranslation();
 
-    const navegar = useNavigate();
-
-    const navegarFavoritosdHandler = () => {
-        navegar(ROUTES.favoritos);
-    };
-
-    const cambiarIdioma = () => {
-        const nuevoIdioma = i18n.language === 'es' ? 'en' : 'es';
-        i18n.changeLanguage(nuevoIdioma);
-        localStorage.setItem('idioma', nuevoIdioma); // Guarda el idioma en localStorage
-    };
-
     const getViajesInternacionales = async () => { // me traigo la api con todos los tours internacionales
         try {
             const viajesInternacionalesResultado = await fetch(
@@ -61,44 +49,23 @@ function Home() {
         <div className="bg-gray-100 min-h-screen p-6">
 
             {(viajesInternacionales.length === 0 || viajesNacionales.length === 0) ? (
-                <div className="flex items-center justify-center h-screen bg-gray-100">
-                    
+                <div className="flex items-center justify-center h-screen bg-gray-100">                    
                     <p className="text-6xl font-bold text-gray-700">
                         {t('cargando')}
                     </p>
-
                 </div>
             ) : (
                 <div>
-
-                    <h1 className="text-3xl font-bold text-sky-600 mb-4">{t('titulo')}</h1>
-
-                    <button
-                        className="bg-emerald-600 text-white px-4 py-2 rounded hover:bg-emerald-700"
-                        onClick={navegarFavoritosdHandler}>
-                        {t('favoritos')}
-                    </button>
-
-                    {/* -------------- boton de trasnlation -------------------- */}
-                    <button
-                        className="bg-sky-600 text-white px-4 py-2 rounded hover:bg-sky-700 ml-2"
-                        onClick={cambiarIdioma}>
-                        {t('traducir')}
-                    </button>                    
-                    {/* -------------- boton de trasnlation -------------------- */}
-
-                    <br /><br />
                     
                     <Buscador tours={[...viajesInternacionales, ...viajesNacionales]}/>
                     
-                    <br />
-                    
-                    <h2 className="text-2xl font-semibold text-emerald-700 mb-2">
+                    <h2 className="text-3xl font-bold text-emerald-700 mb-2 mt-[24px]">
                         {t('toursInternacioales')}</h2>
 
                     {viajesInternacionales && <ListaItem listaItems={viajesInternacionales}/>}
 
-                    <h2 className="text-2xl font-semibold text-emerald-700 mt-8 mb-2">
+                    {/* font-semibold */}
+                    <h2 className="text-3xl font-bold text-emerald-700 mt-8 mb-2">
                         {t('toursNacioales')}
                     </h2>
 

@@ -10,17 +10,8 @@ function Detalle() {
     const [viajesFavoritos, setViajesFavoritos] = useState(favoritosGuardadas);
     const [yaAgregado, setYaAgregado] = useState(false);
     const [viaje, setViaje] = useState(null); // Inicializar como null porque viene un solo objeto
-    const { t, i18n } = useTranslation();
+    const { t } = useTranslation();
     const { tipo, id } = useParams(); // Nos da el id que viene en la URL    
-    const navegar = useNavigate();
-
-    const navegarHomedHandler = () => {
-        navegar(ROUTES.home);
-    };
-
-    const navegarFavoritosdHandler = () => {
-        navegar(ROUTES.favoritos);
-    };
 
     const getViajesInternacionales = async () => {
         try {
@@ -137,21 +128,7 @@ function Detalle() {
 
                     <h1 className="text-3xl font-bold text-sky-700 mb-6 text-center">
                         {t('detallesTour')}
-                    </h1>
-
-                    <div className="flex flex-wrap justify-center gap-4 mb-8">
-                        <button
-                            className="bg-sky-600 text-white px-4 py-2 rounded hover:bg-sky-700"
-                            onClick={navegarHomedHandler}>
-                            {t('home')}
-                        </button>
-
-                        <button
-                            className="bg-emerald-600 text-white px-4 py-2 rounded hover:bg-emerald-700"
-                            onClick={navegarFavoritosdHandler}>
-                            {t('favoritos')}
-                        </button>
-                    </div>
+                    </h1>                    
 
                     {/* Item centrado y con ancho máximo */}
                     <div className="w-full  max-w-md">

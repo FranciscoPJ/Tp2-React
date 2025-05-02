@@ -33,25 +33,13 @@ export default function Item({ item, eliminarTour, agregarFavoritos, yaAgregado 
                                 alt={item.ciudad}
                                 className="w-full h-48 object-cover rounded"
                             />
-                            {/* <div className="text-sky-600 font-bold mb-2">
-                                {item.id}
-                            </div> */}
-                            <div className="text-gray-800">
+                            {/* <div className="text-sky-600 font-bold mb-2">{item.id}</div> */}
+                            <div className="text-gray-800 mt-[2px]">
                                 {t(`internacional.pais.${normalizar(item.pais)}`)}
                             </div>
                             <div className="text-gray-700">
                                 {t(`internacional.ciudad.${normalizar(item.ciudad)}`)}
-                            </div>
-
-                            {
-                                eliminarTour && (
-                                    <button
-                                        className="bg-red-500 text-white px-3 py-1 rounded hover:bg-red-600"
-                                        onClick={() => eliminarTour(item.tipo, item.id)}>
-                                        {t('eliminarTour')}
-                                    </button>
-                                )
-                            }
+                            </div>                    
                             {
                                 agregarFavoritos ? (
                                     <div>
@@ -59,8 +47,8 @@ export default function Item({ item, eliminarTour, agregarFavoritos, yaAgregado 
                                             {t(`internacional.descripcion.${normalizar(item.descripcion)}`)}
                                         </div>
                                         <button
-                                            className={`${yaAgregado ? 'bg-emerald-600 hover:bg-emerald-700' : 'bg-sky-600 hover:bg-sky-700'
-                                                } text-white px-3 py-1 rounded mr-2`}
+                                            className={`${yaAgregado ? 
+                                            'bg-emerald-600 hover:bg-emerald-700' : 'bg-sky-600 hover:bg-sky-700'} text-white px-3 py-1 rounded mr-2`}
                                             onClick={() => agregarFavoritos(item)}
                                         >
                                             {yaAgregado ? t('agregado') : t('agregarFavoritos')}
@@ -68,9 +56,18 @@ export default function Item({ item, eliminarTour, agregarFavoritos, yaAgregado 
                                     </div>
                                 ) : (
                                     <button
-                                        className="bg-sky-600 text-white px-3 py-1 rounded hover:bg-emerald-700 ml-2"
+                                        className="bg-sky-600 text-white px-3 py-1 rounded hover:bg-emerald-700 mt-1"
                                         onClick={() => navegarDetalledHandler(item.tipo, item.id)}>
                                         {t('verDetalles')}
+                                    </button>
+                                )
+                            }
+                            {
+                                eliminarTour && (
+                                    <button
+                                        className="bg-red-500 text-white px-3 py-1 rounded hover:bg-red-600 ml-2"
+                                        onClick={() => eliminarTour(item.tipo, item.id)}>
+                                        {t('eliminarTour')}
                                     </button>
                                 )
                             }
@@ -82,25 +79,13 @@ export default function Item({ item, eliminarTour, agregarFavoritos, yaAgregado 
                                 alt={item.provincia}
                                 className="w-full h-48 object-cover rounded"
                             />
-                            {/* <div className="text-sky-600 font-bold mb-2">
-                                {item.id}
-                            </div> */}
-                            <div className="text-gray-800">
+                            {/* <div className="text-sky-600 font-bold mb-2">{item.id}</div> */}
+                            <div className="text-gray-800 mt-[2px]">
                                 {t(`nacional.provincia.${normalizar(item.provincia)}`)}
                             </div>
                             <div className="text-gray-700">
                                 {t(`nacional.lugares.${normalizar(item.lugares[0])}`)}
                             </div>
-
-                            {
-                                eliminarTour && (
-                                    <button
-                                        className="bg-red-500 text-white px-3 py-1 rounded hover:bg-red-600"
-                                        onClick={() => eliminarTour(item.tipo, item.id)}>
-                                        {t('eliminarTour')}
-                                    </button>
-                                )
-                            }
                             {
                                 agregarFavoritos ? (
                                     <div>
@@ -118,9 +103,18 @@ export default function Item({ item, eliminarTour, agregarFavoritos, yaAgregado 
 
                                 ) : (
                                     <button
-                                        className="bg-sky-600 text-white px-3 py-1 rounded hover:bg-emerald-700 ml-2"
+                                        className="bg-sky-600 text-white px-3 py-1 rounded hover:bg-emerald-700"
                                         onClick={() => navegarDetalledHandler(item.tipo, item.id)}>
                                         {t('verDetalles')}
+                                    </button>
+                                )
+                            }
+                            {
+                                eliminarTour && (
+                                    <button
+                                        className="bg-red-500 text-white px-3 py-1 rounded hover:bg-red-600  ml-2"
+                                        onClick={() => eliminarTour(item.tipo, item.id)}>
+                                        {t('eliminarTour')}
                                     </button>
                                 )
                             }
