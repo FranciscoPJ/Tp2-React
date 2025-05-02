@@ -16,6 +16,9 @@
     "agregarFavoritos": "Add to Favorites",
     "noHayTours": "No tours selected...",
 
+    "ingresarUnTour": "Enter an international or national tour",
+    "noResultados": "No results found.",
+
     "internacional": {
         "pais": {
             "brasil": "Brazil",

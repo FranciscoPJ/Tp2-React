@@ -2,6 +2,7 @@ import './Home.module.css';
 
 import React, { useEffect, useState } from 'react';
 
+import Buscador from '../../components/Buscador/Buscador';
 import ListaItem from '../../components/ListaItem/ListaItem';
 import { ROUTES } from '../../const/routes';
 import { useNavigate } from 'react-router';
@@ -86,6 +87,12 @@ function Home() {
                     </button>                    
                     {/* -------------- boton de trasnlation -------------------- */}
 
+                    <br /><br />
+                    
+                    <Buscador tours={[...viajesInternacionales, ...viajesNacionales]}/>
+                    
+                    <br />
+                    
                     <h2 className="text-2xl font-semibold text-emerald-700 mb-2">
                         {t('toursInternacioales')}</h2>
 
