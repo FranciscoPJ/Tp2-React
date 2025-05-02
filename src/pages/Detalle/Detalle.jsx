@@ -85,7 +85,7 @@ function Detalle() {
         setYaAgregado(existe);
         // hasta aca
 
-    }, [id, tipo, viajesFavoritos]); // Mejor poner [id, tipo, viajesFavoritos] en dependencias, por si cambia el id   
+    }, [id, tipo]); // Mejor poner [id, tipo] en dependencias, por si cambia el id   
 
     const agregarFavoritos = (tour) => {
         const existe = viajesFavoritos.some(

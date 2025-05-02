@@ -5,10 +5,7 @@ import { useNavigate } from 'react-router';
 import { useTranslation } from 'react-i18next';
 
 export default function Item({ item, eliminarTour, agregarFavoritos, yaAgregado }) {
-    //const [mostraObjeto, setMostraObjeto] = useState(item);
-
     const { t, i18n } = useTranslation();
-
     const navegar = useNavigate();
 
     const navegarDetalledHandler = (tipo, id) => {
@@ -45,9 +42,7 @@ export default function Item({ item, eliminarTour, agregarFavoritos, yaAgregado 
                             <div className="text-gray-700">
                                 {t(`internacional.ciudad.${normalizar(item.ciudad)}`)}
                             </div>
-                            <div className="text-gray-600 mb-4">
-                                {t(`internacional.descripcion.${normalizar(item.descripcion)}`)}
-                            </div>
+
                             {
                                 eliminarTour && (
                                     <button
@@ -59,13 +54,18 @@ export default function Item({ item, eliminarTour, agregarFavoritos, yaAgregado 
                             }
                             {
                                 agregarFavoritos ? (
-                                    <button
-                                        className={`${yaAgregado ? 'bg-emerald-600 hover:bg-emerald-700' : 'bg-sky-600 hover:bg-sky-700'
-                                            } text-white px-3 py-1 rounded mr-2`}
-                                        onClick={() => agregarFavoritos(item)}
-                                    >
-                                        {yaAgregado ? t('agregado') : t('agregarFavoritos')}
-                                    </button>
+                                    <div>
+                                        <div className="text-gray-600 mb-4">
+                                            {t(`internacional.descripcion.${normalizar(item.descripcion)}`)}
+                                        </div>
+                                        <button
+                                            className={`${yaAgregado ? 'bg-emerald-600 hover:bg-emerald-700' : 'bg-sky-600 hover:bg-sky-700'
+                                                } text-white px-3 py-1 rounded mr-2`}
+                                            onClick={() => agregarFavoritos(item)}
+                                        >
+                                            {yaAgregado ? t('agregado') : t('agregarFavoritos')}
+                                        </button>
+                                    </div>
                                 ) : (
                                     <button
                                         className="bg-sky-600 text-white px-3 py-1 rounded hover:bg-emerald-700 mr-2"
@@ -91,9 +91,7 @@ export default function Item({ item, eliminarTour, agregarFavoritos, yaAgregado 
                             <div className="text-gray-700">
                                 {t(`nacional.lugares.${normalizar(item.lugares[0])}`)}
                             </div>
-                            <div className="text-gray-600 mb-4">
-                                {t(`nacional.descripcion.${normalizar(item.descripcion)}`)}
-                            </div>
+
                             {
                                 eliminarTour && (
                                     <button
@@ -105,13 +103,19 @@ export default function Item({ item, eliminarTour, agregarFavoritos, yaAgregado 
                             }
                             {
                                 agregarFavoritos ? (
-                                    <button
-                                        className={`${yaAgregado ? 'bg-emerald-600 hover:bg-emerald-700' : 'bg-sky-600 hover:bg-sky-700'
-                                            } text-white px-3 py-1 rounded mr-2`}
-                                        onClick={() => agregarFavoritos(item)}
-                                    >
-                                        {yaAgregado ? t('agregado') : t('agregarFavoritos')}
-                                    </button>
+                                    <div>
+                                        <div className="text-gray-600 mb-4">
+                                            {t(`nacional.descripcion.${normalizar(item.descripcion)}`)}
+                                        </div>
+                                        <button
+                                            className={`${yaAgregado ? 'bg-emerald-600 hover:bg-emerald-700' : 'bg-sky-600 hover:bg-sky-700'
+                                                } text-white px-3 py-1 rounded mr-2`}
+                                            onClick={() => agregarFavoritos(item)}
+                                        >
+                                            {yaAgregado ? t('agregado') : t('agregarFavoritos')}
+                                        </button>
+                                    </div>
+
                                 ) : (
                                     <button
                                         className="bg-sky-600 text-white px-3 py-1 rounded hover:bg-emerald-700 mr-2"

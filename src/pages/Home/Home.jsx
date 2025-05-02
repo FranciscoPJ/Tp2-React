@@ -80,7 +80,7 @@ function Home() {
 
                     {/* -------------- boton de trasnlation -------------------- */}
                     <button
-                        className="bg-sky-600 text-white px-4 py-2 rounded hover:bg-sky-700 mr-2"
+                        className="bg-sky-600 text-white px-4 py-2 rounded hover:bg-sky-700 ml-2"
                         onClick={cambiarIdioma}>
                         {t('traducir')}
                     </button>                    
@@ -89,13 +89,13 @@ function Home() {
                     <h2 className="text-2xl font-semibold text-emerald-700 mb-2">
                         {t('toursInternacioales')}</h2>
 
-                    {viajesInternacionales && <ListaItem listaItems={viajesInternacionales} />}
+                    {viajesInternacionales && <ListaItem listaItems={viajesInternacionales}/>}
 
                     <h2 className="text-2xl font-semibold text-emerald-700 mt-8 mb-2">
                         {t('toursNacioales')}
                     </h2>
 
-                    {viajesNacionales && <ListaItem listaItems={viajesNacionales} />}
+                    {viajesNacionales && <ListaItem listaItems={viajesNacionales}/>}
                 </div>
             )}
 
