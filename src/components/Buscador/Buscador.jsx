@@ -73,17 +73,17 @@ const Buscador = ({ tours }) => {
                 <h3 className="font-semibold text-lg">
                   {tour.tipo === 'internacional' ? (
                     <>
-                      {t(`internacional.pais.${normalizar(tour.pais || "")}`)} - {t(`internacional.ciudad.${normalizar(tour.ciudad || "")}`)}
+                      {t(`internacional.pais.${normalizar(tour.pais || "")}`)}. -{t(`internacional.ciudad.${normalizar(tour.ciudad || "")}`)}.
                     </>
                   ) : (
                     <>
-                      {t(`nacional.provincia.${normalizar(tour.provincia || "")}`)} -{" "}
+                      {t(`nacional.provincia.${normalizar(tour.provincia || "")}`)}. -{" "}
                       {tour.lugares?.map((lugar, i) => (
                         <span key={i}>
                           {t(`nacional.lugares.${normalizar(lugar)}`)}
                           {i < tour.lugares.length - 1 ? ", " : ""}
                         </span>
-                      ))}
+                      ))}.
                     </>
                   )}
                 </h3>

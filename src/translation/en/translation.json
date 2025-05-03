@@ -74,10 +74,20 @@
         },
         "lugares": {
             "villalaangostura": "Villa La Angostura",
+            "sanmartindelosandes": "San Martín de los Andes",
+            "caviahue": "Caviahue",
             "vallegrande": "Valle Grande",
+            "sanrafael": "San Rafael",
+            "potrerillos": "Potrerillos",
             "elbolson": "El Bolsón",
+            "bariloche": "Bariloche",
+            "lasgrutas": "Las Grutas",
             "elchalten": "El Chaltén",
-            "comodororivadavia": "Comodoro Rivadavia"
+            "elcalafate": "El Calafate",
+            "puertodeseado": "Puerto Deseado",
+            "comodororivadavia": "Comodoro Rivadavia",
+            "puertomadryn": "Puerto Madryn",
+            "trevelin": "Trevelin"
         },
         "descripcion": {
             "1": "Neuquén, a gem of Argentine Patagonia, offers dreamlike landscapes among mountains, crystal-clear lakes, and ancient forests. Villa La Angostura, known as the 'garden of Patagonia', enchants with its alpine architecture and proximity to Los Arrayanes National Park. San Martín de los Andes, on the shores of Lake Lacar, is a paradise for hiking, skiing, and fishing enthusiasts. Caviahue, at the foot of the Copahue volcano, stands out for its natural hot springs and stunning views. Every corner of Neuquén invites you to connect with nature and enjoy unique adventures year-round.",
