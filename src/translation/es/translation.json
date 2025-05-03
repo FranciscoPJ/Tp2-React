@@ -15,9 +15,18 @@
     "agregado" : "Agregado",
     "agregarFavoritos": "Agregar Favoritos",
     "noHayTours": "No hay tours seleccionados...",
-
     "ingresarUnTour": "Ingresá un tour internacional o nacional...",
     "noResultados": "No se encontraron resultados.",
+    "footerTextoTourMundo": "Explorá el mundo con nuestros tours nacionales e internacionales. Experiencias únicas, seguras y personalizadas.",
+    "contacto": "Contacto",
+    "siguenos": "Síguenos",
+    "derechosReservados": "Todos los derechos reservados.",
+    "pais": "País",
+    "ciudad": "Ciudad",
+    "atracciones": "Atracciones",
+    "descripcion": "Descripción",
+    "provincia": "Provincia",
+    "lugares": "Lugares",
 
     "internacional": {
         "pais": {
@@ -42,11 +51,15 @@
             "palaya": "Playa"
         },
         "descripcion": {
-            "descripcion1": "Descripción 1",
-            "descripcion2": "Descripción 2",
-            "descripcion3": "Descripción 3",
-            "descripcion4": "Descripción 4",
-            "descripcion5": "Descripción 5"
+            "1": "Brasil deslumbra con su alegría, paisajes naturales y ritmo vibrante. En Río de Janeiro, la playa de Copacabana invita a relajarse al sol, el imponente Cristo Redentor corona el cerro del Corcovado ofreciendo vistas únicas, y el Pan de Azúcar regala una postal inolvidable al atardecer.",
+
+            "2": "Estados Unidos ofrece una increíble diversidad de paisajes y experiencias. Desde Sacramento, se puede visitar el majestuoso Parque Nacional Yosemite, cruzar el icónico Golden Gate Bridge en San Francisco y disfrutar del Lago Tahoe, ideal para deportes acuáticos y nieve.",
+
+            "3": "Chile cautiva con su geografía extrema y naturaleza pura. En Pucón, el Salto Palguín sorprende con su fuerza, el Volcán Villarrica ofrece aventuras inolvidables con vistas espectaculares, y el Lago Villarrica es perfecto para paseos, kayak o relajarse en sus orillas.",
+
+            "4": "Canadá combina modernidad con paisajes naturales imponentes. En Ottawa, la Rougue River es ideal para caminatas y kayak, el Parliament Hill destaca por su arquitectura y simbolismo nacional, y el Canal Rideau, en invierno, se transforma en la pista de patinaje más grande del mundo.",
+
+            "5": "México fascina con su riqueza cultural y belleza natural. En Tulum, Playa Paraíso hace honor a su nombre con arenas blancas y aguas turquesas, las ruinas mayas junto al mar ofrecen historia viva, y el Cenote Dos Ojos invita a explorar un mundo subterráneo de aguas cristalinas."
         }
     },
 
@@ -66,11 +79,15 @@
             "comodororivadavia": "Comodoro Rivadavia"
         },
         "descripcion": {
-            "descripcion1": "Descripción 1",
-            "descripcion2": "Descripción 2",
-            "descripcion3": "Descripción 3",
-            "descripcion4": "Descripción 4",
-            "descripcion5": "Descripción 5"
+            "1": "Neuquén, una joya de la Patagonia argentina, ofrece paisajes de ensueño entre montañas, lagos cristalinos y bosques milenarios. Villa La Angostura, conocida como el 'jardín de la Patagonia', enamora con su arquitectura alpina y su cercanía al Parque Nacional Los Arrayanes. San Martín de los Andes, a orillas del Lago Lacar, es un paraíso para los amantes del senderismo, el esquí y la pesca. Caviahue, al pie del volcán Copahue, se destaca por sus termas naturales y vistas imponentes. Cada rincón de Neuquén invita a conectarse con la naturaleza y a vivir aventuras únicas durante todo el año.",
+
+            "2": "Mendoza es sinónimo de vinos de calidad mundial, pero también de paisajes montañosos que quitan el aliento. En Valle Grande, se pueden practicar deportes acuáticos y recorrer el imponente Cañón del Atuel. San Rafael, una ciudad vibrante en medio de viñedos, combina cultura, gastronomía y aventura al aire libre. Potrerillos, al pie de la cordillera, ofrece vistas impresionantes del dique y una amplia oferta de actividades como rafting, kayak y senderismo. La provincia es también la puerta de entrada al Aconcagua, la montaña más alta de América, convirtiéndola en un destino imperdible para los viajeros.",
+
+            "3": "Río Negro es una provincia de contrastes, que combina la majestuosidad de la cordillera con la calidez del mar. El Bolsón, un refugio hippie en las montañas, es famoso por su feria artesanal, cervezas locales y senderos que llevan a cascadas y miradores. Bariloche, joya turística del sur, combina arquitectura suiza, lagos glaciares y centros de esquí, siendo uno de los destinos más visitados del país. En la costa, Las Grutas sorprende con sus playas de aguas cálidas, únicas en la Patagonia, y sus cuevas naturales. Esta provincia invita a recorrerla en todas las estaciones, con propuestas para todos los gustos.",
+
+            "4": "Santa Cruz, tierra de gigantes glaciares y paisajes indómitos, es uno de los mayores tesoros naturales de Argentina. El Chaltén, capital nacional del trekking, ofrece rutas inolvidables hacia el cerro Fitz Roy y otros picos de la Patagonia austral. El Calafate, por su parte, es el punto de partida para visitar el impactante Glaciar Perito Moreno, una de las maravillas naturales del mundo. Puerto Deseado, en la costa atlántica, es un lugar ideal para el avistaje de fauna marina, como lobos y pingüinos. Esta provincia ofrece experiencias únicas que conectan al visitante con lo más puro y salvaje de la naturaleza.",
+
+            "5": "Chubut es un territorio rico en historia, naturaleza y cultura. Comodoro Rivadavia, centro energético del sur argentino, combina mar y meseta con una intensa actividad cultural. Puerto Madryn, una de las capitales del turismo de naturaleza del país, es famosa por el avistaje de ballenas francas australes y por su cercanía a la Península Valdés, un Patrimonio de la Humanidad. Trevelin, al oeste, muestra la herencia galesa entre lagos y bosques andinos, con un ritmo de vida apacible y hermosos paisajes. Cada destino en Chubut invita a descubrir historias, sabores y paisajes inolvidables."
         }
     }
 

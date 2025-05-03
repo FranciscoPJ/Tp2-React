@@ -15,9 +15,19 @@
     "agregado": "Added",
     "agregarFavoritos": "Add to Favorites",
     "noHayTours": "No tours selected...",
-
     "ingresarUnTour": "Enter an international or national tour",
     "noResultados": "No results found.",
+    "footerTextoTourMundo": "Explore the world with our national and international tours. Unique, safe, and personalized experiences.",
+    "contacto": "Contact",
+    "siguenos": "Follow us",
+    "derechosReservados": "All rights reserved.",
+    "pais": "Country",
+    "ciudad": "City",
+    "atracciones": "Attractions",
+    "descripcion": "Description",
+    "provincia": "Pronvince",
+    "lugares": "Places",
+
 
     "internacional": {
         "pais": {
@@ -42,11 +52,15 @@
             "palaya": "Beach"
         },
         "descripcion": {
-            "descripcion1": "Description 1",
-            "descripcion2": "Description 2",
-            "descripcion3": "Description 3",
-            "descripcion4": "Description 4",
-            "descripcion5": "Description 5"
+            "1": "Brazil dazzles with its joy, natural landscapes, and vibrant rhythm. In Rio de Janeiro, Copacabana Beach invites you to relax under the sun, the imposing Christ the Redeemer crowns Corcovado Hill offering unique views, and Sugarloaf Mountain provides an unforgettable sunset postcard.",
+
+            "2": "The United States offers an incredible diversity of landscapes and experiences. From Sacramento, you can visit the majestic Yosemite National Park, cross the iconic Golden Gate Bridge in San Francisco, and enjoy Lake Tahoe, ideal for water sports and snow activities.",
+
+            "3": "Chile captivates with its extreme geography and pure nature. In Pucón, the Palguín Waterfall impresses with its power, the Villarrica Volcano offers unforgettable adventures with spectacular views, and Lake Villarrica is perfect for boating, kayaking, or relaxing on its shores.",
+
+            "4": "Canada combines modernity with impressive natural landscapes. In Ottawa, the Rouge River is ideal for hiking and kayaking, Parliament Hill stands out for its architecture and national symbolism, and the Rideau Canal, in winter, becomes the largest skating rink in the world.",
+
+            "5": "Mexico fascinates with its cultural richness and natural beauty. In Tulum, Playa Paraíso lives up to its name with white sands and turquoise waters, the Mayan ruins by the sea offer living history, and the Dos Ojos Cenote invites you to explore an underground world of crystal-clear waters."
         }
     },
 
@@ -66,11 +80,15 @@
             "comodororivadavia": "Comodoro Rivadavia"
         },
         "descripcion": {
-            "descripcion1": "Description 1",
-            "descripcion2": "Description 2",
-            "descripcion3": "Description 3",
-            "descripcion4": "Description 4",
-            "descripcion5": "Description 5"
+            "1": "Neuquén, a gem of Argentine Patagonia, offers dreamlike landscapes among mountains, crystal-clear lakes, and ancient forests. Villa La Angostura, known as the 'garden of Patagonia', enchants with its alpine architecture and proximity to Los Arrayanes National Park. San Martín de los Andes, on the shores of Lake Lacar, is a paradise for hiking, skiing, and fishing enthusiasts. Caviahue, at the foot of the Copahue volcano, stands out for its natural hot springs and stunning views. Every corner of Neuquén invites you to connect with nature and enjoy unique adventures year-round.",
+
+            "2": "Mendoza is synonymous with world-class wines, but also with breathtaking mountain landscapes. In Valle Grande, visitors can enjoy water sports and explore the impressive Atuel Canyon. San Rafael, a vibrant city surrounded by vineyards, combines culture, gastronomy, and outdoor adventure. Potrerillos, at the foothills of the Andes, offers stunning views of the dam and a wide range of activities such as rafting, kayaking, and hiking. The province is also the gateway to Aconcagua, the highest mountain in the Americas, making it a must-visit destination for travelers.",
+
+            "3": "Río Negro is a province of contrasts, combining the majesty of the mountains with the warmth of the sea. El Bolsón, a bohemian mountain retreat, is famous for its craft fair, local beers, and trails leading to waterfalls and viewpoints. Bariloche, a southern tourism jewel, blends Swiss-style architecture, glacial lakes, and ski resorts, making it one of the most visited destinations in the country. On the coast, Las Grutas surprises with its warm beaches—unique in Patagonia—and natural sea caves. This province invites exploration year-round, with experiences for every taste.",
+
+            "4": "Santa Cruz, land of giant glaciers and untamed landscapes, is one of Argentina’s greatest natural treasures. El Chaltén, the national trekking capital, offers unforgettable trails to Mount Fitz Roy and other peaks of southern Patagonia. El Calafate is the starting point to visit the stunning Perito Moreno Glacier, one of the natural wonders of the world. Puerto Deseado, on the Atlantic coast, is ideal for spotting marine wildlife such as sea lions and penguins. This province offers unique experiences that connect visitors with the purest and wildest nature.",
+
+            "5": "Chubut is a land rich in history, nature, and culture. Comodoro Rivadavia, the energy hub of southern Argentina, blends sea and plateau with a vibrant cultural scene. Puerto Madryn, a nature tourism capital, is renowned for southern right whale watching and its proximity to Península Valdés, a UNESCO World Heritage Site. To the west, Trevelin showcases Welsh heritage among Andean lakes and forests, offering a peaceful lifestyle and beautiful scenery. Each destination in Chubut invites you to discover unforgettable stories, flavors, and landscapes."
         }
     }
 }

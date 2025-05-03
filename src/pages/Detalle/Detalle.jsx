@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from "react";
-import { useNavigate, useParams } from "react-router-dom"; //  OJO: es "react-router-dom", no "react-router"
 
 import Item from "../../components/Item/Item";
-import { ROUTES } from "../../const/routes";
+import { useParams } from "react-router-dom"; //  OJO: es "react-router-dom", no "react-router"
 import { useTranslation } from 'react-i18next';
 
 function Detalle() {
@@ -136,7 +135,6 @@ function Detalle() {
                     </div>
 
                 </div>
-
 
             )}
 

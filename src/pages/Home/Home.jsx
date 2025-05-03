@@ -4,8 +4,6 @@ import React, { useEffect, useState } from 'react';
 
 import Buscador from '../../components/Buscador/Buscador';
 import ListaItem from '../../components/ListaItem/ListaItem';
-import { ROUTES } from '../../const/routes';
-import { useNavigate } from 'react-router';
 import { useTranslation } from 'react-i18next';
 
 function Home() {
