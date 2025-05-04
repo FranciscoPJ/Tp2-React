@@ -23,7 +23,7 @@ function Header() {
     };
 
     return (
-        <header className="bg-gray-50 p-4">
+        <header className="bg-gray-50 p-4 sticky top-0 z-50">
             <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
                 <h1 className="text-4xl sm:text-5xl font-bold text-sky-600">
                     {t('titulo')}

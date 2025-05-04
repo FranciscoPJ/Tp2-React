@@ -44,16 +44,16 @@ export default function Item({
 
                   <div className="text-gray-800 mt-[2px]">
                     {t("pais")}:{" "}
-                    {t(`internacional.pais.${normalizar(item.pais)}`)}.
+                    {t(`internacional.pais.${normalizar(item.pais)}`)}
                   </div>
 
                   <div className="text-gray-700">
                     {t("ciudad")}:{" "}
-                    {t(`internacional.ciudad.${normalizar(item.ciudad)}`)}.
+                    {t(`internacional.ciudad.${normalizar(item.ciudad)}`)}
                   </div>
 
                   <div className="text-gray-700">
-                    {t("atracciones")}: {item.atracciones.join(", ")}.
+                    {t("atracciones")}: {item.atracciones.join(", ")}
                   </div>
 
                   <div className="text-gray-600 mb-4">
@@ -90,11 +90,11 @@ export default function Item({
                   />
 
                   <div className="text-gray-800 mt-[2px]">
-                    {t(`internacional.pais.${normalizar(item.pais)}`)}.
+                    {t(`internacional.pais.${normalizar(item.pais)}`)}
                   </div>
 
                   <div className="text-gray-700">
-                    {t(`internacional.ciudad.${normalizar(item.ciudad)}`)}.
+                    {t(`internacional.ciudad.${normalizar(item.ciudad)}`)}
                   </div>
 
                   <button
