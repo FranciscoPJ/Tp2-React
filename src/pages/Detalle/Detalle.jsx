@@ -1,14 +1,14 @@
 import React, { useEffect, useState } from "react";
 
 import Item from "../../components/Item/Item";
+import { jsPDF } from "jspdf";
 import { useParams } from "react-router-dom"; //  OJO: es "react-router-dom", no "react-router"
 import { useTranslation } from "react-i18next";
-import { jsPDF } from "jspdf";
 
 function Detalle() {
-  const favoritosGuardadas =
-    JSON.parse(localStorage.getItem("favoritos")) || [];
+  const favoritosGuardadas = JSON.parse(localStorage.getItem("favoritos")) || [];
   const [viajesFavoritos, setViajesFavoritos] = useState(favoritosGuardadas);
+  const [imagenesBase64, setImagenesBase64] = useState({});
   const [yaAgregado, setYaAgregado] = useState(false);
   const [viaje, setViaje] = useState(null); // Inicializar como null porque viene un solo objeto
   const { t } = useTranslation();
@@ -26,6 +26,12 @@ function Detalle() {
         setViaje(undefined); // El tour con ID ${id} no fue encontrado
       } else {
         setViaje(data);
+
+        if (data.coverImage && !imagenesBase64[data.id]) {
+          convertirYGuardarImagen(data.id, data.coverImage).catch((err) =>
+            console.error("Error al convertir imagen:", err)
+          );
+        }
       }
     } catch (error) {
       console.log("@@@@, Error, no funciona tours internacionales: \n", error);
@@ -44,6 +50,13 @@ function Detalle() {
         setViaje(undefined); // El tour con ID ${id} no fue encontrado
       } else {
         setViaje(data);
+
+        if (data.coverImage && !imagenesBase64[data.id]) {
+          convertirYGuardarImagen(data.id, data.coverImage).catch((err) =>
+            console.error("Error al convertir imagen:", err)
+          );
+        }
+
       }
 
       // console.log("Nacionales:", viajesNacionales);
@@ -67,7 +80,6 @@ function Detalle() {
       console.log("@@@@, Error: Tipo inválido en la URL");
       setViaje(undefined);
     }
-
     localStorage.setItem("favoritos", JSON.stringify(viajesFavoritos));
 
     // Verificar si ya está en favoritos
@@ -75,7 +87,7 @@ function Detalle() {
       (fav) => fav.id === id && fav.tipo === tipo
     );
     setYaAgregado(existe);
-    // hasta aca
+    // hasta aca      
   }, [id, tipo]); // Mejor poner [id, tipo] en dependencias, por si cambia el id
 
   const agregarFavoritos = (tour) => {
@@ -97,47 +109,109 @@ function Detalle() {
       setYaAgregado(true); // cambia a agregado
     }
   };
+
+  const convertirYGuardarImagen = (id, url) => {
+    return new Promise((resolve, reject) => {
+      const img = new Image();
+      img.crossOrigin = "anonymous";
+      img.onload = () => {
+        const canvas = document.createElement("canvas");
+        canvas.width = img.width;
+        canvas.height = img.height;
+        const ctx = canvas.getContext("2d");
+        ctx.drawImage(img, 0, 0);
+        const dataURL = canvas.toDataURL("image/jpeg");
+
+        setImagenesBase64((prev) => ({ ...prev, [id]: dataURL }));
+        resolve(dataURL);
+      };
+      img.onerror = reject;
+      img.src = url;
+    });
+  };
+
   const handleDescargarPDF = () => {
+    //if (!viaje) return;
+
     const doc = new jsPDF();
     doc.setFontSize(16);
     doc.text("Detalle del Viaje", 10, 10);
     doc.setFontSize(12);
     let y = 20;
 
-    if ("pais" in viaje) {
-      // Internacional
-      doc.text(`Imagen: ${viaje.coverImage}`, 10, y);
-      y += 10;
-      doc.text(`País: ${viaje.pais}`, 10, y);
-      y += 10;
-      doc.text(`Ciudad: ${viaje.ciudad}`, 10, y);
-      y += 10;
-      doc.text(`Atracciones: ${viaje.atracciones}`, 10, y);
-      y += 10;
+    const imagen = imagenesBase64[viaje.id];
+    if (imagen) {
+      const img = new Image();
+      img.src = imagen;
 
-      const descripcionLimpia = viaje.descripcion || "";
-      const descripcionDividida = doc.splitTextToSize(descripcionLimpia, 180);
-      doc.text("Descripción:", 10, y);
-      y += 10;
-      doc.text(descripcionDividida, 10, y);
-    } else if ("provincia" in viaje) {
-      // Nacional
-      doc.text(`Provincia: ${viaje.provincia}`, 10, y);
-      y += 10;
-      doc.text(`Lugares: ${viaje.lugares}`, 10, y);
-      y += 10;
+      img.onload = () => {
+        const pageWidth = doc.internal.pageSize.getWidth();
+        const maxImageWidth = 160; // dejamos en "mm" de margen a cada lado
+        const scaleFactor = Math.min(maxImageWidth / img.width, 1);
+        const imageWidth = img.width * scaleFactor;
+        const imageHeight = img.height * scaleFactor;
+        const xCentered = (pageWidth - imageWidth) / 2;
 
-      const descripcionLimpia = viaje.descripcion || "";
-      const descripcionDividida = doc.splitTextToSize(descripcionLimpia, 180);
-      doc.text("Descripción:", 10, y);
-      y += 10;
-      doc.text(descripcionDividida, 10, y);
+        doc.addImage(imagen, "JPEG", xCentered, y, imageWidth, imageHeight);
+        y += imageHeight + 10;
+
+        agregarContenidoTexto(doc, y);
+      };
     } else {
-      doc.text("Información del viaje no disponible.", 10, y);
+      agregarContenidoTexto(doc, y);
     }
 
-    doc.save(`viaje-${viaje.id}.pdf`);
+    function agregarContenidoTexto(doc, yInicial) {
+      let y = yInicial;
+
+      if ("pais" in viaje) {        
+        doc.text(`País: ${viaje.pais}.`, 10, y);
+        y += 10;
+        doc.text(`Ciudad: ${viaje.ciudad}.`, 10, y);
+        y += 10;
+
+        const Atracciones = viaje.atracciones ? viaje.atracciones.join(", ") : ""; // Si es un arreglo, unimos con comas y espacio.
+        doc.text(`Lugares: ${Atracciones}.`, 10, y);
+        y += 10;
+
+        // doc.text(`Atracciones: ${viaje.atracciones}`, 10, y);
+        // y += 10;
+
+        const descripcionLimpia = viaje.descripcion || "";
+        const descripcionTexto = `Descripción: ${descripcionLimpia}`;
+        const descripcionDividida = doc.splitTextToSize(descripcionTexto, 180);
+
+        const lineHeight = 6; // Espaciado vertical personalizado (puede ajustar a gusto)
+
+        descripcionDividida.forEach(linea => {
+          doc.text(linea, 10, y);
+          y += lineHeight;
+        });        
+      } else if ("provincia" in viaje) {
+        doc.text(`Provincia: ${viaje.provincia}.`, 10, y);
+        y += 10;
+        const lugares = viaje.lugares ? viaje.lugares.join(", ") : ""; // Si es un arreglo, unimos con comas y espacio.
+        doc.text(`Lugares: ${lugares}.`, 10, y);
+        y += 10;
+
+        const descripcionLimpia = viaje.descripcion || "";
+        const descripcionTexto = `Descripción: ${descripcionLimpia}`;
+        const descripcionDividida = doc.splitTextToSize(descripcionTexto, 180);
+
+        const lineHeight = 6; // Espaciado vertical personalizado (puede ajustar a gusto)
+
+        descripcionDividida.forEach(linea => {
+          doc.text(linea, 10, y);
+          y += lineHeight;
+        });
+      } else {
+        doc.text("Información del viaje no disponible.", 10, y);
+      }
+
+      doc.save(`viaje-${viaje.id}.pdf`);
+    }
   };
+
 
   return (
     <div>
