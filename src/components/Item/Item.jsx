@@ -151,19 +151,11 @@ export default function Item({
                   />
 
                   <div className="text-gray-800 mt-[2px]">
-<<<<<<< HEAD
                     {getTextoTraducido(item.provincia)}
                   </div>
 
                   <div className="text-gray-700">
                     {item.lugares?.[0] || ""}
-=======
-                    {getTextoTraducido(item.provincia)}.
-                  </div>
-
-                  <div className="text-gray-700">
-                    {item.lugares?.[0] || ""}.
->>>>>>> b4dd7705dd6dc96db7e830055ebbbb35e4280f8c
                   </div>
 
                   <button
