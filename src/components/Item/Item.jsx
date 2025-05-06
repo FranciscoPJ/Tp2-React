@@ -30,7 +30,11 @@ export default function Item({
       {item ? (
         <div key={item.id}>
           {item.tipo === "internacional" ? ( // si no tiene la clave provincia, muestra el item internacional
+<<<<<<< HEAD
             <div className="bg-white shadow-lg hover:shadow-xl transition-shadow rounded-xl border border-gray-200">
+=======
+            <div className="bg-white shadow-lg hover:shadow-xl transition-shadow rounded-xl p-4 border border-gray-200">
+>>>>>>> b4dd7705dd6dc96db7e830055ebbbb35e4280f8c
 
               {agregarFavoritos ? (
                 <div>
@@ -41,6 +45,7 @@ export default function Item({
                   />
 
                   <div className="text-gray-800 mt-[2px]">
+<<<<<<< HEAD
                     {t("country")}:{" "}{getTextoTraducido(item.pais)}
                   </div>
 
@@ -50,6 +55,17 @@ export default function Item({
 
                   <div className="text-gray-700">
                     {t("attractions")}: {item.atracciones.join(", ")}
+=======
+                    {t("country")}:{" "}{getTextoTraducido(item.pais)}.
+                  </div>
+
+                  <div className="text-gray-700">
+                    {t("city")}:{" "}{item.ciudad}.
+                  </div>
+
+                  <div className="text-gray-700">
+                    {t("attractions")}: {item.atracciones.join(", ")}.
+>>>>>>> b4dd7705dd6dc96db7e830055ebbbb35e4280f8c
                   </div>
 
                   <div className="text-gray-600 mb-4">
@@ -80,11 +96,19 @@ export default function Item({
                   />
 
                   <div className="text-gray-800 mt-[2px]">
+<<<<<<< HEAD
                     {getTextoTraducido(item.pais)}
                   </div>
 
                   <div className="text-gray-700">
                     {item.ciudad}
+=======
+                    {getTextoTraducido(item.pais)}.
+                  </div>
+
+                  <div className="text-gray-700">
+                    {item.ciudad}.
+>>>>>>> b4dd7705dd6dc96db7e830055ebbbb35e4280f8c
                   </div>
 
                   <button
@@ -114,11 +138,19 @@ export default function Item({
                   />
 
                   <div className="text-gray-800 mt-[2px]">
+<<<<<<< HEAD
                     {t("province")}:{" "}{getTextoTraducido(item.provincia)}
                   </div>
 
                   <div className="text-gray-700">
                     {t("places")}: {item.lugares.join(", ")}
+=======
+                    {t("province")}:{" "}{getTextoTraducido(item.provincia)}.
+                  </div>
+
+                  <div className="text-gray-700">
+                    {t("places")}: {item.lugares.join(", ")}.
+>>>>>>> b4dd7705dd6dc96db7e830055ebbbb35e4280f8c
                   </div>
 
                   <div className="text-gray-600 mb-4">
@@ -151,11 +183,19 @@ export default function Item({
                   />
 
                   <div className="text-gray-800 mt-[2px]">
+<<<<<<< HEAD
                     {getTextoTraducido(item.provincia)}
                   </div>
 
                   <div className="text-gray-700">
                     {item.lugares?.[0] || ""}
+=======
+                    {getTextoTraducido(item.provincia)}.
+                  </div>
+
+                  <div className="text-gray-700">
+                    {item.lugares?.[0] || ""}.
+>>>>>>> b4dd7705dd6dc96db7e830055ebbbb35e4280f8c
                   </div>
 
                   <button

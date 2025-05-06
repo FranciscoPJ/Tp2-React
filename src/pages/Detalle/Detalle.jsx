@@ -168,9 +168,15 @@ function Detalle() {
       let y = yInicial;
 
       if ("pais" in viaje) {
+<<<<<<< HEAD
         doc.text(`${t("country")}: ${getTextoTraducido(viaje.pais)}.`, 10, y);
         y += 10;        
         doc.text(`${t("city")}: ${viaje.ciudad}.`, 10, y);
+=======
+        doc.text(`${t("pais")}: ${getTextoTraducido(viaje.pais)}.`, 10, y);
+        y += 10;        
+        doc.text(`${t("ciudad")}: ${viaje.ciudad}.`, 10, y);
+>>>>>>> b4dd7705dd6dc96db7e830055ebbbb35e4280f8c
         y += 10;
 
         const Atracciones = viaje.atracciones ? viaje.atracciones.join(", ") : ""; // Si es un arreglo, unimos con comas y espacio.
@@ -178,7 +184,11 @@ function Detalle() {
         y += 10;
 
         const descripcionLimpia = getTextoTraducido(viaje.descripcion);
+<<<<<<< HEAD
         const descripcionTexto = `${t("description")}: ${descripcionLimpia}`;
+=======
+        const descripcionTexto = `${t("descripcion")}: ${descripcionLimpia}`;
+>>>>>>> b4dd7705dd6dc96db7e830055ebbbb35e4280f8c
         const descripcionDividida = doc.splitTextToSize(descripcionTexto, 180);
 
         const lineHeight = 6; // Espaciado vertical personalizado (puede ajustar a gusto)

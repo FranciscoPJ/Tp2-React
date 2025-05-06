@@ -2,7 +2,11 @@
     "translate": "Traducir en Ingles",
     "loading": "Cargando...",
     "title": "TourMundo",
+<<<<<<< HEAD
     "home": "Inicio",
+=======
+    "home": "Home",
+>>>>>>> b4dd7705dd6dc96db7e830055ebbbb35e4280f8c
     "favorites": "Favoritos",
     "deleteTour": "Eliminar Tour",
     "internationalTours": "Tours Internacionales",
