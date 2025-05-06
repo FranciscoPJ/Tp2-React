@@ -16,7 +16,7 @@ function App() {
   // Componente para manejar rutas similares a 'detalle' y 'favoritos'
   function RutaFlexible() {
     const location = useLocation();
-    const { t } = useTranslation(); // para usar t("error404") y t("verificarTipoId")
+    const { t } = useTranslation(); // para usar t("error404") y t("checkTypeOrId")
     const path = location.pathname.toLowerCase().replace(/\s+/g, '');
     const segmentos = path.split('/').filter(Boolean);
   
@@ -40,7 +40,7 @@ function App() {
       return (
         <div className=" items-center justify-center bg-white p-4 mt-4  rounded-lg shadow">
           <h1 className="text-red-600 text-6xl font-bold">{t("error404")}.</h1>
-          <p className="text-red-600 text-6xl font-semi-bold">{t("verificarTipoId")}</p>
+          <p className="text-red-600 text-6xl font-semi-bold">{t("checkTypeOrId")}</p>
         </div>
       );
     }
