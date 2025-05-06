@@ -49,14 +49,14 @@ function Home() {
     <div className="bg-gray-100 min-h-screen p-6">
       {viajesInternacionales.length === 0 || viajesNacionales.length === 0 ? (
         <div className="flex items-center justify-center h-screen bg-gray-100">
-          <p className="text-6xl font-bold text-gray-700">{t("cargando")}</p>
+          <p className="text-6xl font-bold text-gray-700">{t("loading")}</p>
         </div>
       ) : (
         <div>
           <Buscador tours={[...viajesInternacionales, ...viajesNacionales]} />
 
           <h2 className="text-3xl font-bold text-emerald-700 mb-2 mt-[24px]">
-            {t("toursInternacioales")}
+            {t("internationalTours")}
           </h2>
 
           {viajesInternacionales && (
@@ -65,7 +65,7 @@ function Home() {
 
           {/* font-semibold */}
           <h2 className="text-3xl font-bold text-emerald-700 mt-8 mb-2">
-            {t("toursNacioales")}
+            {t("nationalTours")}
           </h2>
 
           {viajesNacionales && <ListaItem listaItems={viajesNacionales} />}

@@ -6,7 +6,7 @@ import { useTranslation } from 'react-i18next';
 
 const Buscador = ({ tours }) => {
   const [busqueda, setBusqueda] = useState("");
-  const { t, i18n } = useTranslation();
+  const { t } = useTranslation();
   const navegar = useNavigate();
 
   const navegarDetalledHandler = (tipo, id) => {
@@ -16,31 +16,27 @@ const Buscador = ({ tours }) => {
     navegar(ruta);
   };
 
-  const normalizar = (texto) =>
-    texto
-      .toLowerCase()
-      .normalize("NFD") // elimina acentos
-      .replace(/[\u0300-\u036f]/g, "")
-      .replace(/[^a-z0-9]/g, ""); // elimina espacios y símbolos
-
   const buscarTour = (e) => {
     setBusqueda(e.target.value);
+  };
+
+  const getTextoTraducido = (obj) => {
+    const lang = localStorage.getItem("idioma") || "es";
+    return obj?.[lang] || obj?.es || "";
   };
 
   const toursFiltradas = () => {
     const termino = busqueda.trim().toLowerCase();
     return tours.filter((dato) =>
-      dato.pais?.toLowerCase().includes(termino) ||
+      getTextoTraducido(dato.pais)?.toLowerCase().includes(termino) ||
       dato.ciudad?.toLowerCase().includes(termino) ||
-      dato.provincia?.toLowerCase().includes(termino) ||
+      getTextoTraducido(dato.provincia)?.toLowerCase().includes(termino) ||
       dato.lugares?.some(lugar => lugar.toLowerCase().includes(termino))
     );
   };
 
   useEffect(() => {
-    //console.log("Tours originales:", tours);
-    //console.log("Búsqueda:", busqueda);
-    //console.log("Filtrados:", toursFiltradas());
+
   }, [busqueda, tours]);
 
   return (
@@ -49,18 +45,12 @@ const Buscador = ({ tours }) => {
         <input
           id="busqueda"
           type="text"
-          placeholder={t('ingresarUnTour')}
+          placeholder={t('enterTour')}
           value={busqueda}
           onChange={buscarTour}
           className="w-full max-w-3xl px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-sky-500"
         />
       </div>
-
-      {/*
-        {t(`internacional.pais.${normalizar(item.pais)}`)}
-
-        {t(`nacional.provincia.${normalizar(item.provincia)}`)}  lugares
-      */}
 
       <div className="max-w-3xl space-y-0">
         {busqueda && toursFiltradas().length > 0 ? (
@@ -73,28 +63,26 @@ const Buscador = ({ tours }) => {
                 <h3 className="font-semibold text-lg">
                   {tour.tipo === 'internacional' ? (
                     <>
-                      {t(`internacional.pais.${normalizar(tour.pais || "")}`)}. -{t(`internacional.ciudad.${normalizar(tour.ciudad || "")}`)}.
+                      {getTextoTraducido(tour.pais) || ""}. - {tour.ciudad || ""}.
                     </>
                   ) : (
                     <>
-                      {t(`nacional.provincia.${normalizar(tour.provincia || "")}`)}. -{" "}
-                      {tour.lugares?.map((lugar, i) => (
+                      {getTextoTraducido(tour.provincia) || ""}. - {" "}{tour.lugares?.map((lugar, i) => (
                         <span key={i}>
-                          {t(`nacional.lugares.${normalizar(lugar)}`)}
+                          {lugar}
                           {i < tour.lugares.length - 1 ? ", " : ""}
                         </span>
                       ))}.
                     </>
                   )}
                 </h3>
-                {/* <p className="text-sm text-gray-600">{tour.descripcion}</p> */}
               </button>
             </div>
           ))
         ) : (
           busqueda && (
             <div className="p-4 rounded-lg shadow-sm hover:shadow-md transition">
-              <p className="text-gray-500 mt-2">{t('noResultados')}</p>
+              <p className="text-gray-500 mt-2">{t('noMatches')}</p>
             </div>
           )
         )}

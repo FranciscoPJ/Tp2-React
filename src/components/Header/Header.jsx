@@ -26,14 +26,14 @@ function Header() {
         <header className="bg-gray-50 p-4 sticky top-0 z-50">
             <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
                 <h1 className="text-4xl sm:text-5xl font-bold text-sky-600">
-                    {t('titulo')}
+                    {t('title')}
                 </h1>
 
                 <div className="flex flex-wrap gap-2 mt-4">
                     <button
                         className="bg-teal-600 text-white px-4 py-1.5 rounded hover:bg-teal-700"
                         onClick={cambiarIdioma}>
-                        {t('traducir')}
+                        {t('translate')}
                     </button>
 
                     <button
@@ -45,7 +45,7 @@ function Header() {
                     <button
                         className="bg-emerald-600 text-white px-4 py-1.5 rounded hover:bg-emerald-700"
                         onClick={navegarFavoritosdHandler}>
-                        {t('favoritos')}
+                        {t('favorites')}
                     </button>
                 </div>
             </div>

@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 
 import Item from "../../components/Item/Item";
 import { jsPDF } from "jspdf";
-import { useParams } from "react-router-dom"; //  OJO: es "react-router-dom", no "react-router"
+import { useParams } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 
 function Detalle() {
@@ -110,13 +110,6 @@ function Detalle() {
     }
   };
 
-  const normalizar = (texto) =>
-    (texto || "")
-      .toLowerCase()
-      .normalize("NFD")
-      .replace(/[\u0300-\u036f]/g, "")
-      .replace(/[^a-z0-9]/g, "");
-
   const convertirYGuardarImagen = (id, url) => {
     return new Promise((resolve, reject) => {
       const img = new Image();
@@ -135,6 +128,11 @@ function Detalle() {
       img.onerror = reject;
       img.src = url;
     });
+  };
+
+  const getTextoTraducido = (obj) => {
+    const lang = localStorage.getItem("idioma") || "es";
+    return obj?.[lang] || obj?.es || "";
   };
 
   const handleDescargarPDF = () => {
@@ -170,17 +168,16 @@ function Detalle() {
       let y = yInicial;
 
       if ("pais" in viaje) {
-        doc.text(`${t("pais")}: ${t(`internacional.pais.${normalizar(viaje.pais)}`)}.`, 10, y);
+        doc.text(`${t("pais")}: ${getTextoTraducido(viaje.pais)}.`, 10, y);
         y += 10;        
-        doc.text(`${t("ciudad")}: ${t(`internacional.ciudad.${normalizar(viaje.ciudad)}`)}.`, 10, y);
+        doc.text(`${t("ciudad")}: ${viaje.ciudad}.`, 10, y);
         y += 10;
 
         const Atracciones = viaje.atracciones ? viaje.atracciones.join(", ") : ""; // Si es un arreglo, unimos con comas y espacio.
         doc.text(`${t("lugares")}: ${Atracciones}.`, 10, y);
         y += 10;
 
-        const descripcionLimpia = getDescripcionTraducida();
-        //console.log(t("descripcion"));
+        const descripcionLimpia = getTextoTraducido(viaje.descripcion);
         const descripcionTexto = `${t("descripcion")}: ${descripcionLimpia}`;
         const descripcionDividida = doc.splitTextToSize(descripcionTexto, 180);
 
@@ -191,15 +188,14 @@ function Detalle() {
           y += lineHeight;
         });
       } else if ("provincia" in viaje) {
-        // doc.text(`${t("ciudad")}: ${t(`nacional.provincia.${normalizar(viaje.provincia)}`)}.`, 10, y);
-        doc.text(`${t("provincia")}: ${t(`nacional.provincia.${normalizar(viaje.provincia)}`)}.`, 10, y);
+        doc.text(`${t("province")}: ${getTextoTraducido(viaje.provincia)}.`, 10, y);
         y += 10;
         const lugares = viaje.lugares ? viaje.lugares.join(", ") : ""; // Si es un arreglo, unimos con comas y espacio.
-        doc.text(`${t("lugares")}: ${lugares}.`, 10, y);
+        doc.text(`${t("places")}: ${lugares}.`, 10, y);
         y += 10;
 
-        const descripcionLimpia = getDescripcionTraducida();
-        const descripcionTexto = `${t("descripcion")}: ${descripcionLimpia}`;
+        const descripcionLimpia = getTextoTraducido(viaje.descripcion);
+        const descripcionTexto = `${t("description")}: ${descripcionLimpia}`;
         const descripcionDividida = doc.splitTextToSize(descripcionTexto, 180);
 
         const lineHeight = 6; // Espaciado vertical personalizado (puede ajustar a gusto)
@@ -214,19 +210,14 @@ function Detalle() {
 
       doc.save(`viaje-${viaje.id}.pdf`);
     }
-  };
-
-  const getDescripcionTraducida = () => {
-    const lang = localStorage.getItem("idioma") || "es";
-    return viaje?.idiomas?.[lang]?.descripcion1 || viaje?.idiomas?.es?.descripcion1 || "";
-  };
+  };  
 
   return (
     <div>
       {/* Cargando... si viaje === null */}
       {viaje === null && (
         <div className="flex items-center justify-center h-screen bg-gray-100">
-          <p className="text-6xl font-bold text-gray-700">{t("cargando")}</p>
+          <p className="text-6xl font-bold text-gray-700">{t("loading")}</p>
         </div>
       )}
 
@@ -234,7 +225,7 @@ function Detalle() {
       {viaje === undefined && (
         <div className="bg-white p-4 mt-4 rounded-lg shadow">
           <h1 className="text-red-600 text-6xl font-bold">{t("error404")}.</h1>
-          <p className="text-red-600 text-6xl font-semi-bold">{t("verificarTipoId")}</p>
+          <p className="text-red-600 text-6xl font-semi-bold">{t("checkTypeOrId")}</p>
         </div>
       )}
 
@@ -242,7 +233,7 @@ function Detalle() {
       {viaje && (
         <div className="bg-gray-100 min-h-screen p-6 flex flex-col items-center">
           <h1 className="text-3xl font-bold text-sky-700 mb-6 text-center">
-            {t("detallesTour")}
+            {t("tourDetails")}
           </h1>
 
           {/* Item centrado y con ancho máximo */}

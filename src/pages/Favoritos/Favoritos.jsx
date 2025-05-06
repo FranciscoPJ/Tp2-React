@@ -1,8 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import { useNavigate, useParams } from "react-router-dom"; //  OJO: es "react-router-dom", no "react-router"
 
 import ListaItem from '../../components/ListaItem/ListaItem';
-import { ROUTES } from '../../const/routes';
 import { useTranslation } from 'react-i18next';
 
 function Favoritos() {
@@ -28,14 +26,14 @@ function Favoritos() {
     return (
         <div className="bg-gray-100 min-h-screen p-6">            
 
-            <h1 className="text-3xl font-bold text-emerald-700 mb-4">{t('favoritos')}</h1>
+            <h1 className="text-3xl font-bold text-emerald-700 mb-4">{t('favorites')}</h1>
             {viajesFavoritos.length > 0 ?
                 (<div>
                     <ListaItem listaItems={viajesFavoritos} eliminarTour={eliminarTour} />
                 </div>)
                 :
                 (<div>
-                    <h1 className="text-slate-700 text-lg">{t('noHayTours')}</h1>
+                    <h1 className="text-slate-700 text-lg">{t('noTours')}</h1>
                 </div>)
             }
         </div>

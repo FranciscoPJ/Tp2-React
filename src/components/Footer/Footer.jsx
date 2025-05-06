@@ -12,15 +12,15 @@ function Footer() {
 
                     {/* Logo y descripción   {t('footerTextoTourMundo')}*/}
                     <div>
-                        <h2 className="text-2xl font-bold text-white mb-2">{t('titulo')}</h2>
+                        <h2 className="text-2xl font-bold text-white mb-2">{t('title')}</h2>
                         <p className="text-sm text-gray-300">
-                            {t('footerTextoTourMundo')}
+                            {t('footerTextTourMundo')}
                         </p>
                     </div>
 
                     {/* Información de contacto */}
                     <div>
-                        <h3 className="text-lg font-semibold mb-2">{t('contacto')}</h3>
+                        <h3 className="text-lg font-semibold mb-2">{t('contact')}</h3>
                         <ul className="text-sm text-gray-300 space-y-1">
                             <li>📍 Av. Argentina 345, Neuquén Capital, Argentina</li>
                             <li>📞 +54 299 1234-5678</li>
@@ -30,7 +30,7 @@ function Footer() {
 
                     {/* Redes sociales */}
                     <div>
-                        <h3 className="text-lg font-semibold mb-2">{t('siguenos')}</h3>
+                        <h3 className="text-lg font-semibold mb-2">{t('followUs')}</h3>
                         <div className="flex space-x-4">
                             <a href="#" className="hover:text-gray-200">🌐 Facebook</a>
                             <a href="#" className="hover:text-gray-200">📸 Instagram</a>
@@ -41,7 +41,7 @@ function Footer() {
                 </div>
 
                 <div className="mt-8 text-center text-sm text-gray-400 border-t border-gray-700 pt-4">
-                    © {new Date().getFullYear()} {t('titulo')}. {t('derechosReservados')}
+                    © {new Date().getFullYear()} {t('title')}. {t('allRightsReserved')}
                 </div>
                 
             </div>

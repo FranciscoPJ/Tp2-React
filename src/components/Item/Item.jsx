@@ -19,17 +19,11 @@ export default function Item({
     navegar(ruta);
   };
 
-  const normalizar = (texto) =>
-    (texto || "")
-      .toLowerCase()
-      .normalize("NFD")
-      .replace(/[\u0300-\u036f]/g, "")
-      .replace(/[^a-z0-9]/g, "");
-
-  const getIdiomaDescripcion = (idiomas) => {
+  const getTextoTraducido = (obj) => {
     const lang = localStorage.getItem("idioma") || "es";
-    return idiomas[lang]?.descripcion1 || idiomas["es"].descripcion1;
+    return obj?.[lang] || obj?.es || "";
   };
+  
 
   return (
     <div>
@@ -37,7 +31,6 @@ export default function Item({
         <div key={item.id}>
           {item.tipo === "internacional" ? ( // si no tiene la clave provincia, muestra el item internacional
             <div className="bg-white shadow-lg hover:shadow-xl transition-shadow rounded-xl p-4 border border-gray-200">
-              {/* <div className="text-sky-600 font-bold mb-2">{item.id}</div> */}
 
               {agregarFavoritos ? (
                 <div>
@@ -48,21 +41,19 @@ export default function Item({
                   />
 
                   <div className="text-gray-800 mt-[2px]">
-                    {t("pais")}:{" "}
-                    {t(`internacional.pais.${normalizar(item.pais)}`)}.
+                    {t("country")}:{" "}{getTextoTraducido(item.pais)}.
                   </div>
 
                   <div className="text-gray-700">
-                    {t("ciudad")}:{" "}
-                    {t(`internacional.ciudad.${normalizar(item.ciudad)}`)}.
+                    {t("city")}:{" "}{item.ciudad}.
                   </div>
 
                   <div className="text-gray-700">
-                    {t("atracciones")}: {item.atracciones.join(", ")}.
+                    {t("attractions")}: {item.atracciones.join(", ")}.
                   </div>
 
                   <div className="text-gray-600 mb-4">
-                    {t("descripcion")}:{" "}{getIdiomaDescripcion(item.idiomas)}   
+                    {t("description")}:{" "}{getTextoTraducido(item.descripcion)}   
                   </div>
 
                   <button
@@ -70,15 +61,13 @@ export default function Item({
                       ? "bg-emerald-600 hover:bg-emerald-700"
                       : "bg-sky-600 hover:bg-sky-700"
                       } text-white px-3 py-1 rounded mr-2`}
-                    onClick={() => agregarFavoritos(item)}
-                  >
-                    {yaAgregado ? t("agregado") : t("agregarFavoritos")}
+                    onClick={() => agregarFavoritos(item)}>
+                    {yaAgregado ? t("added") : t("addFavorites")}
                   </button>
 
                   <button
                     className="bg-sky-600 hover:bg-sky-700 text-white px-3 py-1 rounded mr-2"
-                    onClick={descargarPdf}
-                  >
+                    onClick={descargarPdf}>
                     {t("downloadPDF")}
                   </button>
                 </div>
@@ -91,53 +80,49 @@ export default function Item({
                   />
 
                   <div className="text-gray-800 mt-[2px]">
-                    {t(`internacional.pais.${normalizar(item.pais)}`)}.
+                    {getTextoTraducido(item.pais)}.
                   </div>
 
                   <div className="text-gray-700">
-                    {t(`internacional.ciudad.${normalizar(item.ciudad)}`)}.
+                    {item.ciudad}.
                   </div>
 
                   <button
                     className="bg-sky-600 text-white px-3 py-1 rounded hover:bg-emerald-700 mt-1"
-                    onClick={() => navegarDetalledHandler(item.tipo, item.id)}
-                  >
-                    {t("verDetalles")}
+                    onClick={() => navegarDetalledHandler(item.tipo, item.id)}>
+                    {t("viewDetails")}
                   </button>
                 </>
               )}
               {eliminarTour && (
                 <button
                   className="bg-red-500 text-white px-3 py-1 rounded hover:bg-red-600 ml-2"
-                  onClick={() => eliminarTour(item.tipo, item.id)}
-                >
-                  {t("eliminarTour")}
+                  onClick={() => eliminarTour(item.tipo, item.id)}>
+                  {t("deleteTour")}
                 </button>
               )}
             </div>
           ) : (
             // sino muestra el item nacional
             <div className="bg-white shadow-lg hover:shadow-xl transition-shadow rounded-xl p-4 border border-gray-200">
-              {/* <div className="text-sky-600 font-bold mb-2">{item.id}</div> */}
               {agregarFavoritos ? (
                 <div>
                   <img
                     src={item.coverImage}
-                    alt={item.provincia}
+                    alt={item.provincia.es}
                     className="w-full h-48 object-cover rounded"
                   />
 
                   <div className="text-gray-800 mt-[2px]">
-                    {t("provincia")}:{" "}
-                    {t(`nacional.provincia.${normalizar(item.provincia)}`)}.
+                    {t("province")}:{" "}{getTextoTraducido(item.provincia)}.
                   </div>
 
                   <div className="text-gray-700">
-                    {t("lugares")}: {item.lugares.join(", ")}.
+                    {t("places")}: {item.lugares.join(", ")}.
                   </div>
 
                   <div className="text-gray-600 mb-4">
-                    {t("descripcion")}:{" "}{getIdiomaDescripcion(item.idiomas)}                     
+                    {t("description")}:{" "}{getTextoTraducido(item.descripcion)}                     
                   </div>
 
                   <button
@@ -145,41 +130,38 @@ export default function Item({
                       ? "bg-emerald-600 hover:bg-emerald-700"
                       : "bg-sky-600 hover:bg-sky-700"
                       } text-white px-3 py-1 rounded mr-2`}
-                    onClick={() => agregarFavoritos(item)}
-                  >
-                    {yaAgregado ? t("agregado") : t("agregarFavoritos")}
+                    onClick={() => agregarFavoritos(item)}>
+                    {yaAgregado ? t("added") : t("addFavorites")}
                   </button>
+                  
                   <button
                     className="bg-sky-600 hover:bg-sky-700 text-white px-3 py-1 rounded mr-2"
-                    onClick={descargarPdf}
-                  >
+                    onClick={descargarPdf}>
                     {t("downloadPDF")}
                   </button>
+                  
                 </div>
+                
               ) : (
                 <>
                   <img
                     src={item.coverImage}
-                    alt={item.provincia}
+                    alt={item.provincia.es}
                     className="w-full h-48 object-cover rounded"
                   />
 
                   <div className="text-gray-800 mt-[2px]">
-                    {t(`nacional.provincia.${normalizar(item.provincia)}`)}.
+                    {getTextoTraducido(item.provincia)}.
                   </div>
 
                   <div className="text-gray-700">
-                    {t(
-                      `nacional.lugares.${normalizar(item.lugares?.[0] || "")}`
-                    )}
-                    .
+                    {item.lugares?.[0] || ""}.
                   </div>
 
                   <button
                     className="bg-sky-600 text-white px-3 py-1 rounded hover:bg-emerald-700  mt-2"
-                    onClick={() => navegarDetalledHandler(item.tipo, item.id)}
-                  >
-                    {t("verDetalles")}
+                    onClick={() => navegarDetalledHandler(item.tipo, item.id)}>
+                    {t("viewDetails")}
                   </button>
                 </>
               )}
@@ -188,14 +170,14 @@ export default function Item({
                   className="bg-red-500 text-white px-3 py-1 rounded hover:bg-red-600  ml-2"
                   onClick={() => eliminarTour(item.tipo, item.id)}
                 >
-                  {t("eliminarTour")}
+                  {t("deleteTour")}
                 </button>
               )}
             </div>
           )}
         </div>
       ) : (
-        <div>{t("noHayResultados")}</div>
+        <div>{t("noResults")}</div>
       )}
     </div>
   );

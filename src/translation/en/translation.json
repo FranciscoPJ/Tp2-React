@@ -1,83 +1,31 @@
 {
-    "traducir": "Translate in Spanish",
-    "cargando": "Loading...",
-    "titulo": "TourMundo",
+    "translate": "Translate in Spanish",
+    "loading": "Loading...",
+    "title": "TourMundo",
     "home": "Home",
-    "favoritos": "Favorites",
-    "verDetalles": "View Details",
-    "toursInternacioales": "International Tours",
-    "toursNacioales": "National Tours",
-    "eliminarTour": "Delete Tour",
-    "noHayResultados": "No results found",
+    "favorites": "Favorites",
+    "viewDetails": "View Details",
+    "internationalTours": "International Tours",
+    "nationalTours": "National Tours",
+    "deleteTour": "Delete Tour",
+    "noResults": "No results found",
     "error404": "Error 404: Tour not found",
-    "verificarTipoId": "Please check that the type or ID is correct.",
-    "detallesTour": "Tour Details",
-    "agregado": "Added",
-    "agregarFavoritos": "Add to Favorites",
-    "noHayTours": "No tours selected...",
-    "ingresarUnTour": "Enter an international or national tour",
-    "noResultados": "No results found.",
-    "downloadPDF" : "Download PDF",
-    "footerTextoTourMundo": "Explore the world with our national and international tours. Unique, safe, and personalized experiences.",
-    "contacto": "Contact",
-    "siguenos": "Follow us",
-    "derechosReservados": "All rights reserved.",
-    "pais": "Country",
-    "ciudad": "City",
-    "atracciones": "Attractions",
-    "descripcion": "Description",
-    "provincia": "Pronvince",
-    "lugares": "Places",
-
-
-    "internacional": {
-        "pais": {
-            "brasil": "Brazil",
-            "losestadosunidos": "The United States",
-            "chile": "Chile",
-            "canada": "Canada",
-            "mexico": "Mexico"
-        },
-        "ciudad": {
-            "riodejaneiro": "Rio de Janeiro",
-            "sacramento": "Sacramento",
-            "pucon": "Pucon",
-            "ottawa": "Ottawa",
-            "tulum": "Tulum"
-        },
-        "atracciones": {
-            "playa": "Beach",
-            "yosemitenationalpark": "Yosemite National Park",
-            "saltopalguin": "Palguín Waterfall",
-            "rougueriver": "Rogue River",
-            "palaya": "Beach"
-        }
-    },
-
-    "nacional": {
-        "provincia": {
-            "neuquen": "Neuquén",
-            "mendoza": "Mendoza",
-            "rionegro": "Río Negro",
-            "santacruz": "Santa Cruz",
-            "chubut": "Chubut"
-        },
-        "lugares": {
-            "villalaangostura": "Villa La Angostura",
-            "sanmartindelosandes": "San Martín de los Andes",
-            "caviahue": "Caviahue",
-            "vallegrande": "Valle Grande",
-            "sanrafael": "San Rafael",
-            "potrerillos": "Potrerillos",
-            "elbolson": "El Bolsón",
-            "bariloche": "Bariloche",
-            "lasgrutas": "Las Grutas",
-            "elchalten": "El Chaltén",
-            "elcalafate": "El Calafate",
-            "puertodeseado": "Puerto Deseado",
-            "comodororivadavia": "Comodoro Rivadavia",
-            "puertomadryn": "Puerto Madryn",
-            "trevelin": "Trevelin"
-        }        
-    }
+    "checkTypeOrId": "Please check that the type or ID is correct.",
+    "tourDetails": "Tour Details",
+    "added": "Added",
+    "addFavorites": "Add to Favorites",
+    "noTours": "No tours selected...",
+    "enterTour": "Enter an international or national tour",
+    "noMatches": "No results found.",
+    "downloadPDF": "Download PDF",
+    "footerTextTourMundo": "Explore the world with our national and international tours. Unique, safe, and personalized experiences.",
+    "contact": "Contact",
+    "followUs": "Follow us",
+    "allRightsReserved": "All rights reserved.",
+    "country": "Country",
+    "city": "City",
+    "attractions": "Attractions",
+    "description": "Description",
+    "province": "Pronvince",
+    "places": "Places"
 }
