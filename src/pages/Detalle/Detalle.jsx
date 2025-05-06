@@ -139,7 +139,7 @@ function Detalle() {
 
   const handleDescargarPDF = () => {
     const doc = new jsPDF();
-    doc.setFontSize(16); //detallesTour
+    doc.setFontSize(16);
     doc.text(t("detallesTour"), 10, 10);
     doc.setFontSize(12);
     let y = 20;

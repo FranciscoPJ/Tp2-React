@@ -26,10 +26,10 @@ function App() {
     const [redirigido, setRedirigido] = useState(false);
   
     useEffect(() => {
-      if ("detalle".startsWith(main)) {
+      if (main === "detalle")  {
         window.location.replace(`/Detalle/${tipo}/${id}`);
         setRedirigido(true);
-      } else if ("favoritos".startsWith(main)) {
+      } else if (main === "favoritos") {
         window.location.replace("/Favoritos");
         setRedirigido(true);
       }
