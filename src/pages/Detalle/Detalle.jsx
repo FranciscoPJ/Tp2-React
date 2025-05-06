@@ -110,6 +110,13 @@ function Detalle() {
     }
   };
 
+  const normalizar = (texto) =>
+    (texto || "")
+      .toLowerCase()
+      .normalize("NFD")
+      .replace(/[\u0300-\u036f]/g, "")
+      .replace(/[^a-z0-9]/g, "");
+
   const convertirYGuardarImagen = (id, url) => {
     return new Promise((resolve, reject) => {
       const img = new Image();
@@ -131,11 +138,9 @@ function Detalle() {
   };
 
   const handleDescargarPDF = () => {
-    //if (!viaje) return;
-
     const doc = new jsPDF();
-    doc.setFontSize(16);
-    doc.text("Detalle del Viaje", 10, 10);
+    doc.setFontSize(16); //detallesTour
+    doc.text(t("detallesTour"), 10, 10);
     doc.setFontSize(12);
     let y = 20;
 
@@ -146,7 +151,7 @@ function Detalle() {
 
       img.onload = () => {
         const pageWidth = doc.internal.pageSize.getWidth();
-        const maxImageWidth = 160; // dejamos en "mm" de margen a cada lado
+        const maxImageWidth = 160; // medida en "mm"
         const scaleFactor = Math.min(maxImageWidth / img.width, 1);
         const imageWidth = img.width * scaleFactor;
         const imageHeight = img.height * scaleFactor;
@@ -155,30 +160,28 @@ function Detalle() {
         doc.addImage(imagen, "JPEG", xCentered, y, imageWidth, imageHeight);
         y += imageHeight + 10;
 
-        agregarContenidoTexto(doc, y);
+        agregarContenidoTexto(doc, y,  t);
       };
     } else {
-      agregarContenidoTexto(doc, y);
+      agregarContenidoTexto(doc, y, t);
     }
 
-    function agregarContenidoTexto(doc, yInicial) {
+    function agregarContenidoTexto(doc, yInicial, t) {
       let y = yInicial;
 
-      if ("pais" in viaje) {        
-        doc.text(`País: ${viaje.pais}.`, 10, y);
-        y += 10;
-        doc.text(`Ciudad: ${viaje.ciudad}.`, 10, y);
+      if ("pais" in viaje) {
+        doc.text(`${t("pais")}: ${t(`internacional.pais.${normalizar(viaje.pais)}`)}.`, 10, y);
+        y += 10;        
+        doc.text(`${t("ciudad")}: ${t(`internacional.ciudad.${normalizar(viaje.ciudad)}`)}.`, 10, y);
         y += 10;
 
         const Atracciones = viaje.atracciones ? viaje.atracciones.join(", ") : ""; // Si es un arreglo, unimos con comas y espacio.
-        doc.text(`Lugares: ${Atracciones}.`, 10, y);
+        doc.text(`${t("lugares")}: ${Atracciones}.`, 10, y);
         y += 10;
 
-        // doc.text(`Atracciones: ${viaje.atracciones}`, 10, y);
-        // y += 10;
-
-        const descripcionLimpia = viaje.descripcion || "";
-        const descripcionTexto = `Descripción: ${descripcionLimpia}`;
+        const descripcionLimpia = getDescripcionTraducida();
+        //console.log(t("descripcion"));
+        const descripcionTexto = `${t("descripcion")}: ${descripcionLimpia}`;
         const descripcionDividida = doc.splitTextToSize(descripcionTexto, 180);
 
         const lineHeight = 6; // Espaciado vertical personalizado (puede ajustar a gusto)
@@ -186,16 +189,17 @@ function Detalle() {
         descripcionDividida.forEach(linea => {
           doc.text(linea, 10, y);
           y += lineHeight;
-        });        
+        });
       } else if ("provincia" in viaje) {
-        doc.text(`Provincia: ${viaje.provincia}.`, 10, y);
+        // doc.text(`${t("ciudad")}: ${t(`nacional.provincia.${normalizar(viaje.provincia)}`)}.`, 10, y);
+        doc.text(`${t("provincia")}: ${t(`nacional.provincia.${normalizar(viaje.provincia)}`)}.`, 10, y);
         y += 10;
         const lugares = viaje.lugares ? viaje.lugares.join(", ") : ""; // Si es un arreglo, unimos con comas y espacio.
-        doc.text(`Lugares: ${lugares}.`, 10, y);
+        doc.text(`${t("lugares")}: ${lugares}.`, 10, y);
         y += 10;
 
-        const descripcionLimpia = viaje.descripcion || "";
-        const descripcionTexto = `Descripción: ${descripcionLimpia}`;
+        const descripcionLimpia = getDescripcionTraducida();
+        const descripcionTexto = `${t("descripcion")}: ${descripcionLimpia}`;
         const descripcionDividida = doc.splitTextToSize(descripcionTexto, 180);
 
         const lineHeight = 6; // Espaciado vertical personalizado (puede ajustar a gusto)
@@ -212,6 +216,10 @@ function Detalle() {
     }
   };
 
+  const getDescripcionTraducida = () => {
+    const lang = localStorage.getItem("idioma") || "es";
+    return viaje?.idiomas?.[lang]?.descripcion1 || viaje?.idiomas?.es?.descripcion1 || "";
+  };
 
   return (
     <div>
@@ -226,7 +234,7 @@ function Detalle() {
       {viaje === undefined && (
         <div className="bg-white p-4 mt-4 rounded-lg shadow">
           <h1 className="text-red-600 text-lg">{t("error404")}</h1>
-          <p className="text-red-600 text-lg">{t("verificarTipoId")}</p>          
+          <p className="text-red-600 text-lg">{t("verificarTipoId")}</p>
         </div>
       )}
 

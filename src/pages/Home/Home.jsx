@@ -10,7 +10,7 @@ function Home() {
   const [viajesInternacionales, setViajesInternacionales] = useState([]);
   const [viajesNacionales, setViajesNacionales] = useState([]);
 
-  const { t, i18n } = useTranslation();
+  const { t } = useTranslation();
 
   const getViajesInternacionales = async () => {
     // me traigo la api con todos los tours internacionales

@@ -26,6 +26,11 @@ export default function Item({
       .replace(/[\u0300-\u036f]/g, "")
       .replace(/[^a-z0-9]/g, "");
 
+  const getIdiomaDescripcion = (idiomas) => {
+    const lang = localStorage.getItem("idioma") || "es";
+    return idiomas[lang]?.descripcion1 || idiomas["es"].descripcion1;
+  };
+
   return (
     <div>
       {item ? (
@@ -44,31 +49,27 @@ export default function Item({
 
                   <div className="text-gray-800 mt-[2px]">
                     {t("pais")}:{" "}
-                    {t(`internacional.pais.${normalizar(item.pais)}`)}
+                    {t(`internacional.pais.${normalizar(item.pais)}`)}.
                   </div>
 
                   <div className="text-gray-700">
                     {t("ciudad")}:{" "}
-                    {t(`internacional.ciudad.${normalizar(item.ciudad)}`)}
+                    {t(`internacional.ciudad.${normalizar(item.ciudad)}`)}.
                   </div>
 
                   <div className="text-gray-700">
-                    {t("atracciones")}: {item.atracciones.join(", ")}
+                    {t("atracciones")}: {item.atracciones.join(", ")}.
                   </div>
 
                   <div className="text-gray-600 mb-4">
-                    {t("descripcion")}:{" "}
-                    {t(`internacional.descripcion.${item.id}`, {
-                      defaultValue: item.descripcion,
-                    })}
+                    {t("descripcion")}:{" "}{getIdiomaDescripcion(item.idiomas)}   
                   </div>
 
                   <button
-                    className={`${
-                      yaAgregado
-                        ? "bg-emerald-600 hover:bg-emerald-700"
-                        : "bg-sky-600 hover:bg-sky-700"
-                    } text-white px-3 py-1 rounded mr-2`}
+                    className={`${yaAgregado
+                      ? "bg-emerald-600 hover:bg-emerald-700"
+                      : "bg-sky-600 hover:bg-sky-700"
+                      } text-white px-3 py-1 rounded mr-2`}
                     onClick={() => agregarFavoritos(item)}
                   >
                     {yaAgregado ? t("agregado") : t("agregarFavoritos")}
@@ -90,11 +91,11 @@ export default function Item({
                   />
 
                   <div className="text-gray-800 mt-[2px]">
-                    {t(`internacional.pais.${normalizar(item.pais)}`)}
+                    {t(`internacional.pais.${normalizar(item.pais)}`)}.
                   </div>
 
                   <div className="text-gray-700">
-                    {t(`internacional.ciudad.${normalizar(item.ciudad)}`)}
+                    {t(`internacional.ciudad.${normalizar(item.ciudad)}`)}.
                   </div>
 
                   <button
@@ -136,18 +137,14 @@ export default function Item({
                   </div>
 
                   <div className="text-gray-600 mb-4">
-                    {t("descripcion")}:{" "}
-                    {t(`nacional.descripcion.${item.id}`, {
-                      defaultValue: item.descripcion,
-                    })}
+                    {t("descripcion")}:{" "}{getIdiomaDescripcion(item.idiomas)}                     
                   </div>
 
                   <button
-                    className={`${
-                      yaAgregado
-                        ? "bg-emerald-600 hover:bg-emerald-700"
-                        : "bg-sky-600 hover:bg-sky-700"
-                    } text-white px-3 py-1 rounded mr-2`}
+                    className={`${yaAgregado
+                      ? "bg-emerald-600 hover:bg-emerald-700"
+                      : "bg-sky-600 hover:bg-sky-700"
+                      } text-white px-3 py-1 rounded mr-2`}
                     onClick={() => agregarFavoritos(item)}
                   >
                     {yaAgregado ? t("agregado") : t("agregarFavoritos")}
