@@ -1,7 +1,7 @@
-import React, { useState } from "react";
-
+import Boton from "../Boton/Boton";
 import { ROUTES } from "../../const/routes"; // Ajusta la ruta si es distinta
-import { useNavigate } from "react-router";
+import React from "react";
+import { useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 
 export default function Item({
@@ -11,7 +11,7 @@ export default function Item({
   yaAgregado,
   descargarPdf,
 }) {
-  const { t, i18n } = useTranslation();
+  const { t } = useTranslation();
   const navegar = useNavigate();
 
   const navegarDetalledHandler = (tipo, id) => {
@@ -23,87 +23,74 @@ export default function Item({
     const lang = localStorage.getItem("idioma") || "es";
     return obj?.[lang] || obj?.es || "";
   };
-  
 
   return (
     <div>
       {item ? (
         <div key={item.id}>
-          {item.tipo === "internacional" ? ( // si no tiene la clave provincia, muestra el item internacional
+          {item.tipo === "internacional" ? (  // si no tiene la clave provincia, muestra el item internacional
             <div className="bg-white shadow-lg hover:shadow-xl transition-shadow rounded-xl border border-gray-200">
-
               {agregarFavoritos ? (
-                <div>
+                <div> {/* asi se ve un tour internacional en Detalle*/}
                   <img
                     src={item.coverImage}
                     alt={item.ciudad}
                     className="w-full h-48 object-cover rounded"
                   />
-
                   <div className="text-gray-800 mt-[2px]">
-                    {t("country")}:{" "}{getTextoTraducido(item.pais)}
+                    {t("country")}: {getTextoTraducido(item.pais)}
                   </div>
-
                   <div className="text-gray-700">
-                    {t("city")}:{" "}{item.ciudad}
+                    {t("city")}: {item.ciudad}
                   </div>
-
                   <div className="text-gray-700">
                     {t("attractions")}: {item.atracciones.join(", ")}
                   </div>
-
                   <div className="text-gray-600 mb-4">
-                    {t("description")}:{" "}{getTextoTraducido(item.descripcion)}   
+                    {t("description")}: {getTextoTraducido(item.descripcion)}
                   </div>
-
-                  <button
-                    className={`${yaAgregado
-                      ? "bg-emerald-600 hover:bg-emerald-700"
-                      : "bg-sky-600 hover:bg-sky-700"
-                      } text-white px-3 py-1 rounded mr-2`}
-                    onClick={() => agregarFavoritos(item)}>
-                    {yaAgregado ? t("added") : t("addFavorites")}
-                  </button>
-
-                  <button
-                    className="bg-sky-600 hover:bg-sky-700 text-white px-3 py-1 rounded mr-2"
-                    onClick={descargarPdf}>
-                    {t("downloadPDF")}
-                  </button>
+                  <Boton
+                    texto={yaAgregado ? t("added") : t("addFavorites")}
+                    onClick={() => agregarFavoritos(item)}
+                    clase={`${yaAgregado ? "bg-emerald-600" : "bg-sky-600"
+                      } hover:bg-emerald-700 text-white px-3 py-1 rounded mr-2`}
+                  />
+                  <Boton
+                    texto={t("downloadPDF")}
+                    onClick={descargarPdf}
+                    clase="bg-sky-600 hover:bg-sky-700 text-white px-3 py-1 rounded mr-2"
+                  />
                 </div>
               ) : (
-                <>
+                <> {/* asi se ve un tour internacional en Home*/}
                   <img
                     src={item.coverImage}
                     alt={item.ciudad}
                     className="w-full h-48 object-cover rounded"
                   />
-
                   <div className="text-gray-800 mt-[2px]">
                     {getTextoTraducido(item.pais)}
                   </div>
-
                   <div className="text-gray-700">
                     {item.ciudad}
                   </div>
-
-                  <button
-                    className="bg-sky-600 text-white px-3 py-1 rounded hover:bg-emerald-700 mt-1"
-                    onClick={() => navegarDetalledHandler(item.tipo, item.id)}>
-                    {t("viewDetails")}
-                  </button>
+                  <Boton
+                    texto={t("viewDetails")}
+                    onClick={() => navegarDetalledHandler(item.tipo, item.id)}
+                    clase="bg-sky-600 text-white px-3 py-1 rounded hover:bg-emerald-700 mt-1"
+                  />
                 </>
               )}
               {eliminarTour && (
-                <button
-                  className="bg-red-500 text-white px-3 py-1 rounded hover:bg-red-600 ml-2"
-                  onClick={() => eliminarTour(item.tipo, item.id)}>
-                  {t("deleteTour")}
-                </button>
+                <Boton
+                  texto={t("deleteTour")}
+                  onClick={() => eliminarTour(item.tipo, item.id)}
+                  clase="bg-red-500 text-white px-3 py-1 rounded hover:bg-red-600 ml-2"
+                />
               )}
             </div>
-          ) : (
-            // sino muestra el item nacional
+          ) : ( 
+            // si no es internaional, es nacional y asi se visualiza el tour en Detalle
             <div className="bg-white shadow-lg hover:shadow-xl transition-shadow rounded-xl p-4 border border-gray-200">
               {agregarFavoritos ? (
                 <div>
@@ -112,66 +99,53 @@ export default function Item({
                     alt={item.provincia.es}
                     className="w-full h-48 object-cover rounded"
                   />
-
                   <div className="text-gray-800 mt-[2px]">
-                    {t("province")}:{" "}{getTextoTraducido(item.provincia)}
+                    {t("province")}: {getTextoTraducido(item.provincia)}
                   </div>
-
                   <div className="text-gray-700">
                     {t("places")}: {item.lugares.join(", ")}
                   </div>
-
                   <div className="text-gray-600 mb-4">
-                    {t("description")}:{" "}{getTextoTraducido(item.descripcion)}                     
+                    {t("description")}: {getTextoTraducido(item.descripcion)}
                   </div>
-
-                  <button
-                    className={`${yaAgregado
-                      ? "bg-emerald-600 hover:bg-emerald-700"
-                      : "bg-sky-600 hover:bg-sky-700"
-                      } text-white px-3 py-1 rounded mr-2`}
-                    onClick={() => agregarFavoritos(item)}>
-                    {yaAgregado ? t("added") : t("addFavorites")}
-                  </button>
-                  
-                  <button
-                    className="bg-sky-600 hover:bg-sky-700 text-white px-3 py-1 rounded mr-2"
-                    onClick={descargarPdf}>
-                    {t("downloadPDF")}
-                  </button>
-                  
+                  <Boton
+                    texto={yaAgregado ? t("added") : t("addFavorites")}
+                    onClick={() => agregarFavoritos(item)}
+                    clase={`${yaAgregado ? "bg-emerald-600" : "bg-sky-600"
+                      } hover:bg-emerald-700 text-white px-3 py-1 rounded mr-2`}
+                  />
+                  <Boton
+                    texto={t("downloadPDF")}
+                    onClick={descargarPdf}
+                    clase="bg-sky-600 hover:bg-sky-700 text-white px-3 py-1 rounded mr-2"
+                  />
                 </div>
-                
               ) : (
-                <>
+                <> {/* asi se ve un tour nacional en Home*/}
                   <img
                     src={item.coverImage}
                     alt={item.provincia.es}
                     className="w-full h-48 object-cover rounded"
                   />
-
                   <div className="text-gray-800 mt-[2px]">
                     {getTextoTraducido(item.provincia)}
                   </div>
-
                   <div className="text-gray-700">
                     {item.lugares?.[0] || ""}
                   </div>
-
-                  <button
-                    className="bg-sky-600 text-white px-3 py-1 rounded hover:bg-emerald-700  mt-2"
-                    onClick={() => navegarDetalledHandler(item.tipo, item.id)}>
-                    {t("viewDetails")}
-                  </button>
+                  <Boton
+                    texto={t("viewDetails")}
+                    onClick={() => navegarDetalledHandler(item.tipo, item.id)}
+                    clase="bg-sky-600 text-white px-3 py-1 rounded hover:bg-emerald-700 mt-2"
+                  />
                 </>
               )}
               {eliminarTour && (
-                <button
-                  className="bg-red-500 text-white px-3 py-1 rounded hover:bg-red-600  ml-2"
+                <Boton
+                  texto={t("deleteTour")}
                   onClick={() => eliminarTour(item.tipo, item.id)}
-                >
-                  {t("deleteTour")}
-                </button>
+                  clase="bg-red-500 text-white px-3 py-1 rounded hover:bg-red-600 ml-2"
+                />
               )}
             </div>
           )}
