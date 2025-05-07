@@ -6,7 +6,7 @@
 **Materia: Programacion Web Avanzada** <br>
 **Profesor: Agustin Chiarotto** <br>
 **TP nº 1 React - Parte 2**<br>
-**Link Vercel:** https://tp2-react-378s5pxpb-franciscopjs-projects.vercel.app/
+**Link Vercel:** https://tp2-react-mu.vercel.app/
 
 ## 👥 Integrantes del grupo
 
@@ -17,6 +17,9 @@
 ## 📌 Descripción de la aplicación
 
 Este proyecto es una aplicación web desarrollada con React, diseñada para explorar y buscar tours internacionales de diversas partes del mundo, así como tours nacionales dentro de Argentina. La plataforma permite navegar entre distintas secciones como inicio, detalles y favoritos. En la sección de detalles, se ofrece información completa sobre cada tour, incluyendo país, provincia, descripciones, lugares destacados y atracciones turísticas. Los usuarios pueden agregar tours a una lista de favoritos, consultar sus detalles o eliminarlos de la lista según su preferencia.
+
+## 🌐 Integración de API
+Para la obtención de datos, esta aplicación utiliza MockAPI, una API simulada que permite gestionar información de manera temporal durante el desarrollo. Esto facilita el manejo de datos ficticios sin necesidad de configurar un servidor backend real.
 
 ### Funcionalidades principales:
 
@@ -42,11 +45,12 @@ Este proyecto es una aplicación web desarrollada con React, diseñada para expl
 ---
 
 ## 🛠️ Instrucciones de instalación y ejecución
-
-1.Crear el repositorio en github.<br>
-2.Abrir la terminal e instalar react en el proyecto con el comando npm create vite@latest mi-app-react -- --template react.<br>
-3.Los colaboradores clonan el repositorio en una carpeta (ya sea mediante un comando en la terminal o por URL).<br>
-4.En la terminal, utilizar el comando npm install para instalar las dependencias (guardadas en el archivo package.json) y dejar listo el proyecto para empezar.
+Siga estos pasos para clonar e instalar correctamente el proyecto en su entorno local.
+**1.Abrir una terminal** y ejecutar el siguiente comando para clonar el repositorio: git clone https://github.com/FranciscoPJ/Tp2-React.git<br>
+**2.Ingresar al directorio del proyecto**: cd Tp2-React.<br>
+**3.Instalar las dependencias** ya que es un proyecto con Node.js: npm install<br>
+**4.Iniciar el servidor local**: npm run dev.<br>
+**5.Abrir el navegador**: Copie la URL del servidor local que aparece en la consola, abre su navegador y péguela en la barra de direcciones.
 
 ---
 
