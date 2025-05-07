@@ -63,7 +63,7 @@ Siga estos pasos para clonar e instalar correctamente el proyecto en su entorno 
 ![imagen del header](./src/assets/images/header.png).
 
 3-Un input para buscar un tour internacional o nacional, ingresando el pais, provincia, ciudad o lugares.
-![imagen buscador](./src/assets/images/buscardor.png).
+![imagen buscador](./src/assets/images/buscador.png).
 
 4-Resultados del buscador con la letra "a". Al hacer click en unos de los opciones, lo dirigira a la pagina "detalles" con la descripcion del tour.
 ![imagen buscador con los resultados](./src/assets/images/resultadosBuscador.png).
