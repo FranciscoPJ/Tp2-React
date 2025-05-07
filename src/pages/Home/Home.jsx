@@ -46,16 +46,16 @@ function Home() {
   }, []);
 
   return (
-    <div className="bg-gray-100 min-h-screen p-6">
+    <div className="bg-gray-100 min-h-screen p-12">
       {viajesInternacionales.length === 0 || viajesNacionales.length === 0 ? (
         <div className="flex items-center justify-center h-screen bg-gray-100">
           <p className="text-6xl font-bold text-gray-700">{t("loading")}</p>
         </div>
       ) : (
-        <div>
+        <div className="flex flex-col gap-4">
           <Buscador tours={[...viajesInternacionales, ...viajesNacionales]} />
 
-          <h2 className="text-3xl font-bold text-emerald-700 mb-2 mt-[24px]">
+          <h2 className="text-3xl font-bold text-gray-700 mb-8 mt-[24px]">
             {t("internationalTours")}
           </h2>
 
@@ -63,8 +63,7 @@ function Home() {
             <ListaItem listaItems={viajesInternacionales} />
           )}
 
-          {/* font-semibold */}
-          <h2 className="text-3xl font-bold text-emerald-700 mt-8 mb-2">
+          <h2 className="text-3xl font-bold text-gray-700 mt-16 mb-8">
             {t("nationalTours")}
           </h2>
 

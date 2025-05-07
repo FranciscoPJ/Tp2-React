@@ -99,25 +99,34 @@ export default function Item({
         </div>
       ) : (
         // cuando `agregarFavoritos` es falso se muestra home/favoritos
-        <div className="bg-white shadow rounded-lg overflow-hidden p-4">
-          <img
-            src={item.coverImage}
-            alt={esInternacional ? item.ciudad : item.provincia.es}
-            className="w-full h-48 object-cover rounded"
-          />
-          <div className="mt-2 text-gray-800 font-medium text-base">
-            {esInternacional
-              ? getTextoTraducido(item.pais)
-              : getTextoTraducido(item.provincia)}
+        <div className="bg-white shadow-md hover:shadow-xl transition-shadow duration-300 rounded-xl overflow-hidden">
+          <div className="relative group h-48">
+            <img
+              src={item.coverImage}
+              alt={esInternacional ? item.ciudad : item.provincia.es}
+              className="w-full h-full object-cover transition-all duration-300 group-hover:blur-sm group-hover:opacity-85"
+            />
+
+            <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+              <Boton
+                texto={t("viewDetails")}
+                onClick={() => navegarDetalledHandler(item.tipo, item.id)}
+                clase="px-3 py-1 bg-sky-600 hover:bg-sky-700 text-white text-sm rounded-full shadow-md hover:shadow-lg transition-all duration-300"
+              />
+            </div>
           </div>
-          <div className="text-gray-600 text-sm">
-            {esInternacional ? item.ciudad : item.lugares?.[0] || ""}
+
+          <div className="text-center p-2 border-t-1 border-gray-300">
+            <div className="mt-2 text-gray-800 font-medium text-base">
+              {esInternacional
+                ? getTextoTraducido(item.pais)
+                : getTextoTraducido(item.provincia)}
+            </div>
+            <div className="text-gray-600 text-sm">
+              {esInternacional ? item.ciudad : item.lugares?.[0] || ""}
+            </div>
           </div>
-          <Boton
-            texto={t("viewDetails")}
-            onClick={() => navegarDetalledHandler(item.tipo, item.id)}
-            clase="bg-sky-600 text-white px-4 py-1 rounded-md hover:bg-emerald-700 mt-2 transition-colors"
-          />
+
           <BotonEliminar />
         </div>
       )}

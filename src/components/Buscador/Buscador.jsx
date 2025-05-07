@@ -41,14 +41,17 @@ const Buscador = ({ tours }) => {
 
   return (
     <>
-      <div>
+      <div className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4 w-full px-4">
+        <label className="mr-3 text-xl font-extralight">
+          {t("inputLabel")}
+        </label>
         <input
           id="busqueda"
           type="text"
           placeholder={t('enterTour')}
           value={busqueda}
           onChange={buscarTour}
-          className="w-full max-w-3xl px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-sky-500"
+          className="w-full max-w-lg px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-sky-500"
         />
       </div>
 

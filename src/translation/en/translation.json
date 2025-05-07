@@ -15,7 +15,8 @@
     "added": "Added",
     "addFavorites": "Add to Favorites",
     "noTours": "No tours selected...",
-    "enterTour": "Enter an international or national tour",
+    "enterTour": "Enter destination...",
+    "inputLabel": "Find the place you want to travel",
     "noMatches": "No results found.",
     "downloadPDF": "Download PDF",
     "footerTextTourMundo": "Explore the world with our national and international tours. Unique, safe, and personalized experiences.",
@@ -28,5 +29,5 @@
     "description": "Description",
     "province": "Pronvince",
     "places": "Places",
-    "selectLanguage": "select language"
+    "selectLanguage": "Select language"
 }

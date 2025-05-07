@@ -26,7 +26,7 @@ function Favoritos() {
     return (
         <div className="bg-gray-100 min-h-screen p-6">            
 
-            <h1 className="text-3xl font-bold text-emerald-700 mb-4">{t('favorites')}</h1>
+            <h1 className="text-3xl font-bold text-gray-700 mb-4">{t('favorites')}</h1>
             {viajesFavoritos.length > 0 ?
                 (<div>
                     <ListaItem listaItems={viajesFavoritos} eliminarTour={eliminarTour} />
