@@ -80,8 +80,8 @@ Siga estos pasos para clonar e instalar correctamente el proyecto en su entorno 
 8-Pagina "dettales", muestra la informacion completa de un tour seleccionado. Ademas tiene la opcion de descargar la informacion en un archivo pdf y de agregarlo a la lista de favoritos.
 ![imagen de la pagina detalles de un tour](./src/assets/images/detalles.png)
 
-9-Este tour fue agrgado a la lista de favoritos y el boton cambio su texto por "Agregado", de color verde su fondo.
-![imagen de la pagina detalles de un tour agregado en la lista favoritos](./src/assets/images/detalles-agregado.png)
+9-Este tour fue agregado a la lista de favoritos y el boton cambio su texto por "Agregado", de color verde.
+![imagen de la pagina detalles de un tour agregado en la lista favoritos](./src/assets/images/detallesAgregado.png)
 
 10-Al hacer click en "Descargar PDF", crea un archivo pdf, importando toda la descripcion y imagen del tour.
 ![imagen del archivo pdf, con la descripcion del tour](./src/assets/images/pdf.png)
