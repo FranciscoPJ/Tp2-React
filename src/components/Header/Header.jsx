@@ -52,9 +52,11 @@ function Header() {
             onChange={cambiarIdioma}
             className="px-3 py-1 text-lg border border-gray-300 rounded-md text-gray-700 bg-white focus:outline-none focus:ring-2 focus:ring-blue-500"
           >
-            <option value="">{t("seleccionarIdioma")}</option>
-            <option value="es">Español</option>
-            <option value="en">English</option>
+            <option value="" disabled selected>
+              {t("selectLanguage")}
+            </option>
+            <option value="en">Español</option>
+            <option value="es">English</option>
           </select>
         </div>
       </div>

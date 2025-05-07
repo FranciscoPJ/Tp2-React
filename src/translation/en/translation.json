@@ -27,5 +27,6 @@
     "attractions": "Attractions",
     "description": "Description",
     "province": "Pronvince",
-    "places": "Places"
+    "places": "Places",
+    "selectLanguage": "select language"
 }

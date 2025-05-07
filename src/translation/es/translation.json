@@ -27,5 +27,6 @@
     "attractions": "Atracciones",
     "description": "Descripción",
     "province": "Provincia",
-    "places": "Lugares"
+    "places": "Lugares",
+    "selectLanguage": "Seleccionar idioma"
 }
