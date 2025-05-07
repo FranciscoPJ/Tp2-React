@@ -68,11 +68,11 @@ Siga estos pasos para clonar e instalar correctamente el proyecto en su entorno 
 4-Resultados del buscador con la letra "a". Al hacer click en unos de los opciones, lo dirigira a la pagina "detalles" con la descripcion del tour.
 ![imagen buscador con los resultados](./src/assets/images/resultadosBuscador.png)
 
-5-Visualizacion de la lista tours intenacionales
-![imagen lista de tours internacionales](./src/assets/images/listaInternacionales.png)
+5-Visualizacion de la lista tours intenacionales.
+![imagen lista de tours internacionales](./src/assets/images/listainternacionales.png)
 
-6-Visualizacion de la lista tours nacionales
-![imagen lista de tours nacionales](./src/assets/images/listaNacionales.png)
+6-Visualizacion de la lista tours nacionales.
+![imagen lista de tours nacionales](./src/assets/images/listanacionales.png)
 
 7-La seccion footer tiene una breve descripcion de TourMundo, coctacto con su ubicacion, celular y correro electronico, redes sociales, como facebook, instagram y x y los derechos estan todos resevados.
 ![imagen del footer](./src/assets/images/footer.png)
