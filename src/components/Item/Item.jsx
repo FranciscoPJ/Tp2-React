@@ -46,7 +46,7 @@ export default function Item({
       <Boton
         texto={t("deleteTour")}
         onClick={() => eliminarTour(item.tipo, item.id)}
-        clase="bg-red-500 text-white px-3 py-1 rounded hover:bg-red-600 ml-2"
+        clase="bg-red-500 text-white px-3 py-1 rounded hover:bg-red-600"
       />
     );
 
@@ -116,7 +116,7 @@ export default function Item({
             </div>
           </div>
 
-          <div className="text-center p-2 border-t-1 border-gray-300">
+          <div className="flex flex-col gap-1 text-center p-2">
             <div className="mt-2 text-gray-800 font-medium text-base">
               {esInternacional
                 ? getTextoTraducido(item.pais)
@@ -125,9 +125,12 @@ export default function Item({
             <div className="text-gray-600 text-sm">
               {esInternacional ? item.ciudad : item.lugares?.[0] || ""}
             </div>
+            <div className="mt-1">
+              <BotonEliminar />
+            </div>
+            
           </div>
-
-          <BotonEliminar />
+          
         </div>
       )}
     </div>

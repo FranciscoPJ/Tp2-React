@@ -37,63 +37,57 @@ const Buscador = ({ tours }) => {
   useEffect(() => {}, [busqueda, tours]);
 
   return (
-    <>
-      <div className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4 w-full px-4">
-        <label className="mr-3 text-xl font-extralight">
-          {t("inputLabel")}
-        </label>
+    <div className="flex flex-col sm:flex-row justify-center gap-3 sm:gap-4 w-full px-4">
+      <label className="mr-3 text-xl font-extralight whitespace-nowrap">
+        {t("inputLabel")}
+      </label>
+  
+      <div className="relative w-full max-w-md">
         <input
           id="busqueda"
           type="text"
           placeholder={t("enterTour")}
           value={busqueda}
           onChange={buscarTour}
-          className="w-full max-w-lg px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-sky-500"
+          className="w-full px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-sky-500"
         />
-      </div>
-
-      <div className="max-w-3xl space-y-0 mx-auto text-center">
-        {busqueda && toursFiltradas().length > 0
-          ? toursFiltradas().map((tour, index) => (
-              <div
-                key={index}
-                className="flex justify-center"
-              >
-                <div className="p-4 rounded-lg shadow-sm hover:shadow-md transition w-full">
-                  <button
-                    onClick={() => navegarDetalledHandler(tour.tipo, tour.id)}
-                  >
-                    <h3 className="font-semibold text-lg">
-                      {tour.tipo === "internacional" ? (
-                        <>
-                          {getTextoTraducido(tour.pais) || ""}. -{" "}
-                          {tour.ciudad || ""}.
-                        </>
-                      ) : (
-                        <>
-                          {getTextoTraducido(tour.provincia) || ""}. -{" "}
-                          {tour.lugares?.map((lugar, i) => (
-                            <span key={i}>
-                              {lugar}
-                              {i < tour.lugares.length - 1 ? ", " : ""}
-                            </span>
-                          ))}
-                          .
-                        </>
-                      )}
-                    </h3>
-                  </button>
-                </div>
-              </div>
-            ))
-          : busqueda && (
-              <div className="p-4 rounded-lg shadow-sm hover:shadow-md transition">
-                <p className="text-gray-500 mt-2">{t("noMatches")}</p>
-              </div>
+  
+        {busqueda && (
+          <div className="absolute z-10 top-full left-0 w-full bg-white border border-gray-300 rounded-lg shadow-md mt-2">
+            {toursFiltradas().length > 0 ? (
+              toursFiltradas().map((tour, index) => (
+                <button
+                  key={index}
+                  onClick={() => navegarDetalledHandler(tour.tipo, tour.id)}
+                  className="w-full text-left px-4 py-2 hover:bg-gray-100"
+                >
+                  <h3 className="font-semibold text-sm">
+                    {tour.tipo === "internacional" ? (
+                      <>
+                        {getTextoTraducido(tour.pais) || ""}. - {tour.ciudad || ""}
+                      </>
+                    ) : (
+                      <>
+                        {getTextoTraducido(tour.provincia) || ""}. -{" "}
+                        {tour.lugares?.map((lugar, i) => (
+                          <span key={i}>
+                            {lugar}
+                            {i < tour.lugares.length - 1 ? ", " : ""}
+                          </span>
+                        ))}
+                      </>
+                    )}
+                  </h3>
+                </button>
+              ))
+            ) : (
+              <div className="px-4 py-2 text-gray-500">{t("noMatches")}</div>
             )}
+          </div>
+        )}
       </div>
-    </>
-  );
+    </div>
+  );  
 };
 
 export default Buscador;
