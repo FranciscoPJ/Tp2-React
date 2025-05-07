@@ -45,7 +45,7 @@ Para la obtención de datos, esta aplicación utiliza MockAPI, una API simulada 
 ---
 
 ## 🛠️ Instrucciones de instalación y ejecución
-Siga estos pasos para clonar e instalar correctamente el proyecto en su entorno local.
+Siga estos pasos para clonar e instalar correctamente el proyecto en su entorno local.<br>
 **1.Abrir una terminal** y ejecutar el siguiente comando para clonar el repositorio: git clone https://github.com/FranciscoPJ/Tp2-React.git<br>
 **2.Ingresar al directorio del proyecto**: cd Tp2-React.<br>
 **3.Instalar las dependencias** ya que es un proyecto con Node.js: npm install<br>
